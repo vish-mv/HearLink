@@ -12,6 +12,7 @@ let joinAndDisplayLocalStream = async () => {
     client.on('user-published', handleUserJoined)
     
     client.on('user-left', handleUserLeft)
+    client.on('user-message', handleUserMessage)
     
     let UID = await client.join(APP_ID, CHANNEL, TOKEN, null)
 
