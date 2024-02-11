@@ -32,7 +32,8 @@ let joinStream = async () => {
     document.getElementById('join-btn').style.display = 'none'
     document.getElementById('stream-controls').style.display = 'flex'
     document.getElementById('message_control').style.display = 'flex'
-    document.getElementById('message__form').style.display = 'flex'
+    document.getElementById('message__form').addEventListener('submit', sendMessage)
+    document.getElementById('message__wrapper').style.display = 'flex'
     
 
 }
