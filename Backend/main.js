@@ -1,5 +1,5 @@
 const APP_ID = "352d6ad86462494d904afc4cfeeda64b"
-const TOKEN = "007eJxTYGBtXfqn/1Btrex7l/PP7GtWfT2Wu0yktuYne9OvXWVliscUGIxNjVLMElMszEzMjEwsTVIsDUwS05JNktNSU1MSzUySvC8fT20IZGRo05zIwsgAgSA+C0NuYmYeAwMADGYiCw=="
+const TOKEN = "007eJxTYOD4epRTadXaCy9PsutGXq8QmtGh90+r/+emk67M30wPNqUpMBibGqWYJaZYmJmYGZlYmqRYGpgkpiWbJKelpqYkmpkk5WqcTG0IZGRw2NDOzMgAgSA+C0NuYmYeAwMAgpUgPw=="
 const CHANNEL = "main"
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
@@ -31,6 +31,10 @@ let joinStream = async () => {
     await joinAndDisplayLocalStream()
     document.getElementById('join-btn').style.display = 'none'
     document.getElementById('stream-controls').style.display = 'flex'
+    document.getElementById('message_control').style.display = 'flex'
+    document.getElementById('message__form').style.display = 'flex'
+    
+
 }
 
 let handleUserJoined = async (user, mediaType) => {
@@ -70,6 +74,7 @@ let leaveAndRemoveLocalStream = async () => {
     await client.leave()
     document.getElementById('join-btn').style.display = 'block'
     document.getElementById('stream-controls').style.display = 'none'
+    document.getElementById('message_control').style.display = 'none'
     document.getElementById('video-streams').innerHTML = ''
 }
 
