@@ -6,10 +6,25 @@
     <title>HearLink</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='lobby.css'>
 </head>
 <body>
 
-    <button id="join-btn">Join Stream</button>
+    <main id="lobby-container">
+        <div id="form-container">
+            <div id="form__container__header">
+                <p>👋 Create OR Join a Room</p>
+            </div>
+
+            <div id="form__content__wrapper">
+                <form id="join-form">
+                    <input type="text" name="invite_link" required/>
+                    <input type="submit" value="Join Room" id ="join-btn" />
+                </form>
+            </div>
+        </div>
+    </main>
+
     <div id="stream-wrapper">
         <div id="video-streams"></div>
 
