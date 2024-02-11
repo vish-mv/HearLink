@@ -6,28 +6,12 @@
     <title>HearLink</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='lobby.css'>
 </head>
 <body>
 
-    <main id="lobby-container">
-        <div id="form-container">
-            <div id="form__container__header">
-                <p>👋 Create OR Join a Room</p>
-            </div>
-
-            <div id="form__content__wrapper">
-                <form id="join-form">
-                    <input type="text" name="invite_link" required/>
-                    <input type="submit" value="Join Room" id ="join-btn" />
-                </form>
-            </div>
-        </div>
-    </main>
-
+    <button id="join-btn">Join Stream</button>
     <div id="stream-wrapper">
-        <div class="video-streams" id = "user-1"></div>
-        <div class="video-streams" id = "user-2"></div>
+        <div id="video-streams"></div>
 
         <div id="stream-controls">
             <button id="leave-btn">Leave Stream</button>
@@ -40,5 +24,5 @@
     
 </body>
 <script src="AgoraRTC_N-4.20.0.js"></script>
-<script src='/Backend/main.js'></script>
+<script src='main.js'></script>
 </html>

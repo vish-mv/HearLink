@@ -14,7 +14,7 @@ body{
     padding:20px 40px;
 }
 
-.video-container{
+#video-streams{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     height: 90vh;
@@ -49,7 +49,7 @@ button{
     margin-top:0.5em;
 }
 
-@media screen and (max-width:1200px){
+@media screen and (max-width:1400px){
     #video-streams{
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         width: 95%;
