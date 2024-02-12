@@ -101,3 +101,17 @@ document.getElementById('join-btn').addEventListener('click', joinStream)
 document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
+
+let queryString = window.location.search;
+let urlParams = new URLSearchParams(queryString);
+let roomId = urlParams.get("room");
+console.log("Room ID:", roomId); 
+
+if (roomId) {
+    console.log("Joining room:", roomId); 
+    joinAndDisplayLocalStream(roomId);
+    document.getElementById("join-btn").style.display = "none";
+    document.getElementById("stream-controls").style.display = "flex";
+} else {
+    console.log("No room ID found in URL."); 
+}
