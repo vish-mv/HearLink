@@ -9,10 +9,32 @@
 </head>
 <body>
     
-    <form id = "join-form">
-       <input type = "text" name = "invite_link" required/>
-       <input type = "submit" value="Join Room"/>
-    </form>
+    <main>
+
+        <section id = "form-container">
+            <div id="welcome-message">
+                <h1>Welcome to MyChat</h1>
+                <p>HearLink video chat platform!</p>
+            </div>
+            <form id="form">
+                <div class="field-wrapper">
+                    <div class="form-field">
+                        <label for="room">Room:</label>
+                        <input id="room" name="room" type="text" placeholder="Enter a room name..." style="text-transform:uppercase">
+                    </div>
+                    <div class="form-field">
+                        <label for="name">Name:</label>
+                        <input id="name" name="name" type="text" placeholder="Enter your name..." style="text-transform:uppercase">
+                    </div>
+                    <div class="form-field">
+                        <input type="submit" value="Join Stream">
+                    </div>
+                </div>
+            </form>
+        </section>
+
+    </main>
+    
 
 
 

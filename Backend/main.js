@@ -1,57 +1,18 @@
 const APP_ID = "352d6ad86462494d904afc4cfeeda64b"
 
-//const TOKEN = "007eJxTYDD87KQkXp/kqPTgxZnZLkY82z9N3Cv76+1v4a6GsuJXGxYoMBibGqWYJaZYmJmYGZlYmqRYGpgkpiWbJKelpqYkmpkkzfl6MbUhkJGBq+c+MyMDBIL4LAy5iZl5DAwAs4Mhwg=="
+const TOKEN = "007eJxTYDD87KQkXp/kqPTgxZnZLkY82z9N3Cv76+1v4a6GsuJXGxYoMBibGqWYJaZYmJmYGZlYmqRYGpgkpiWbJKelpqYkmpkkzfl6MbUhkJGBq+c+MyMDBIL4LAy5iZl5DAwAs4Mhwg=="
 
-//const CHANNEL = "main"
+const CHANNEL = "main"
 
-//
-const TOKEN_SERVER_URL = "https://api.agora.io/v1/token/rtc";
-//
+
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
 let localTracks = []
 let remoteUsers = {}
 
-//
-async function generateToken(channelName) {
-    try {
-        // Call your backend API to generate token for the given channelName
-        const response = await fetch(`${TOKEN_SERVER_URL}?channelName=${channelName}`);
-        if (!response.ok) {
-            throw new Error('Failed to generate token');
-        }
-        const token = await response.json();
-        return token;
-    } catch (error) {
-        console.error('Error generating token:', error);
-        return '';
-    }
-}
 
-async function joinAndDisplayLocalStream(roomId) {
-    client.on('user-published', handleUserJoined);
-    client.on('user-left', handleUserLeft);
-    let channelName = `channel_${roomId}`; // Generate a unique channel name using the roomId
-    let token = await generateToken(channelName); // Generate token for the channel
-    let UID = await client.join(APP_ID, channelName, token, roomId);
-    localTracks = await AgoraRTC.createMicrophoneAndCameraTracks(); 
-    let player = `<div class="video-container" id="user-container-${UID}">
-                        <div class="video-player" id="user-${UID}"></div>
-                  </div>`;
-    document.getElementById('video-streams').insertAdjacentHTML('beforeend', player);
-    localTracks[1].play(`user-${UID}`);
-    await client.publish([localTracks[0], localTracks[1]]);
-}
-
-async function joinStream() {
-    await joinAndDisplayLocalStream();
-    document.getElementById('join-btn').style.display = 'none';
-    document.getElementById('stream-controls').style.display = 'flex';  
-}
-//
-
-/*let joinAndDisplayLocalStream = async (roomId) => {
+let joinAndDisplayLocalStream = async (roomId) => {
 
     
     client.on('user-published', handleUserJoined)
@@ -79,7 +40,7 @@ let joinStream = async () => {
     document.getElementById('join-btn').style.display = 'none'
     document.getElementById('stream-controls').style.display = 'flex'
     
-}*/
+}
 
 let handleUserJoined = async (user, mediaType) => {
     remoteUsers[user.uid] = user 
