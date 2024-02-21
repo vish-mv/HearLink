@@ -1,6 +1,6 @@
 const APP_ID = "352d6ad86462494d904afc4cfeeda64b"
 
-const TOKEN = "007eJxTYDD87KQkXp/kqPTgxZnZLkY82z9N3Cv76+1v4a6GsuJXGxYoMBibGqWYJaZYmJmYGZlYmqRYGpgkpiWbJKelpqYkmpkkzfl6MbUhkJGBq+c+MyMDBIL4LAy5iZl5DAwAs4Mhwg=="
+const TOKEN = "007eJxTYGj55MT17KWelElHG7c5j8Bu/XWnONY/yWn03sUkl3dY8bACg7GpUYpZYoqFmYmZkYmlSYqlgUliWrJJclpqakqimUkSw7krqQ2BjAyT1a8zMEIhiM/CkJuYmcfAAACywh3u"
 
 const CHANNEL = "main"
 

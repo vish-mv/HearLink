@@ -27,7 +27,7 @@
                         <input id="name" name="name" type="text" placeholder="Enter your name..." style="text-transform:uppercase">
                     </div>
                     <div class="form-field">
-                        <input type="submit" value="Join Stream">
+                        <input id =join-btn type="submit" value="Join Stream">
                     </div>
                 </div>
             </form>
@@ -41,7 +41,7 @@
 </body>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    /*document.addEventListener('DOMContentLoaded', function() {
         let form = document.getElementById('form');
 
         let handleSubmit = async function(e) {
@@ -64,7 +64,26 @@
         };
 
         form.addEventListener('submit', handleSubmit);
-    });
+    });*/
+    /*let form = document.getElementById('form')
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let roomId = e.target.room.value
+    
+    
+        window.location = `index.html?room=${inviteCode}`
+   
+    })*/
+
+    let form = document.getElementById('form')
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let room = document.getElementById('room').value.toUpperCase()
+        window.location.href = `index.html?room=${room}`
+    })
+
 </script>
 
 </html>
