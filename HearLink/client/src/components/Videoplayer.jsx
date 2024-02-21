@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Grid, Typography, Paper, makeStyles } from '@material-ui/core';
 
-import { SocketContext } from '../context';
+import { SocketContext } from '../Context';
 
 const useStyles = makeStyles((theme) => ({
   video: {
-    width: '550px',
+    width: '600px',
     [theme.breakpoints.down('xs')]: {
       width: '300px',
     },
