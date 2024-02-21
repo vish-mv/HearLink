@@ -27,7 +27,7 @@
                         <input id="name" name="name" type="text" placeholder="Enter your name..." style="text-transform:uppercase">
                     </div>
                     <div class="form-field">
-                        <input id =join-btn type="submit" value="Join Stream">
+                        <input id ="join-btn" type="submit" value="Join Stream">
                     </div>
                 </div>
             </form>
@@ -41,48 +41,13 @@
 </body>
 
 <script>
-    /*document.addEventListener('DOMContentLoaded', function() {
-        let form = document.getElementById('form');
-
-        let handleSubmit = async function(e) {
-            e.preventDefault();
-            let room = document.getElementById('room').value.toUpperCase();
-            let name = document.getElementById('name').value;
-
-            
-            let data = await fetchToken(room);
-
-            let UID = data.uid;
-            let token = data.token;
-
-            sessionStorage.setItem('UID', UID);
-            sessionStorage.setItem('token', token);
-            sessionStorage.setItem('room', room);
-            sessionStorage.setItem('name', name);
-
-            window.open('/room/', '_self');
-        };
-
-        form.addEventListener('submit', handleSubmit);
-    });*/
-    /*let form = document.getElementById('form')
+    let form = document.getElementById('form');
 
     form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        let roomId = e.target.room.value
-    
-    
-        window.location = `index.html?room=${inviteCode}`
-   
-    })*/
-
-    let form = document.getElementById('form')
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        let room = document.getElementById('room').value.toUpperCase()
-        window.location.href = `index.html?room=${room}`
-    })
+        e.preventDefault();
+        let roomId = document.getElementById('room').value.toUpperCase();
+        window.location.href = `index.html?room=${roomId}`;
+    });
 
 </script>
 

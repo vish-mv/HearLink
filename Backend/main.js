@@ -12,6 +12,8 @@ let localTracks = []
 let remoteUsers = {}
 
 
+
+
 let joinAndDisplayLocalStream = async (roomId) => {
 
     
@@ -35,12 +37,20 @@ let joinAndDisplayLocalStream = async (roomId) => {
     await client.publish([localTracks[0], localTracks[1]])
 }
 
-let joinStream = async () => {
+/*let joinStream = async () => {
     await joinAndDisplayLocalStream()
     document.getElementById('join-btn').style.display = 'none'
     document.getElementById('stream-controls').style.display = 'flex'
     
+}*/
+let joinStream = async () => {
+    const roomId = document.getElementById('room').value.toUpperCase(); // Get the room name from input field
+    await joinAndDisplayLocalStream(roomId);
+    document.getElementById('join-btn').style.display = 'none';
+    document.getElementById('stream-controls').style.display = 'flex';
 }
+
+
 
 let handleUserJoined = async (user, mediaType) => {
     remoteUsers[user.uid] = user 

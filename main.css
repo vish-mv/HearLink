@@ -4,7 +4,7 @@ body{
     background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
 }
 
-#join-btn{
+/*#join-btn{
     position: fixed;
     top:50%;
     left:50%;
@@ -12,7 +12,7 @@ body{
     margin-left:-100px;
     font-size:18px;
     padding:20px 40px;
-}
+}*/
 
 #video-streams{
     display:grid;
