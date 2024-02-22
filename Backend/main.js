@@ -1,22 +1,58 @@
 const APP_ID = "352d6ad86462494d904afc4cfeeda64b"
-const TOKEN = "007eJxTYOD4epRTadXaCy9PsutGXq8QmtGh90+r/+emk67M30wPNqUpMBibGqWYJaZYmJmYGZlYmqRYGpgkpiWbJKelpqYkmpkk5WqcTG0IZGRw2NDOzMgAgSA+C0NuYmYeAwMAgpUgPw=="
+const TOKEN = "007eJxTYMiQVNv9tu/yuvMBq1InpXpP+mnKKCn2ObfzsvJ2q0SfwEwFBmNToxSzxBQLMxMzIxNLkxRLA5PEtGST5LTU1JREM5MkfaFrqQ2BjAxbmrcyMzJAIIjPwpCbmJnHwAAAKI4fGQ=="
 const CHANNEL = "main"
+const uid = String(Math.floor(Math.random() * 232))
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
 let localTracks = []
 let remoteUsers = {}
 
+
+let initialRTM = async () => {
+    let client = await AgoraRTM.createInstance(APP_ID)
+    await client.login({token: TOKEN, uid: uid}) // login firstly
+
+    const CHANNEL=await client.creatChannel("main") // create a channel
+    await CHANNEL.join() // join the channel
+
+    let form = document.getElementById('message__form')
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        let message = e.target.message.value
+        await CHANNEL.sendMessage({text: message, sender: uid})
+
+        form.reset()
+
+        document.getElementById('message').value = ''
+        let messageObj = {
+            text: message,
+            sender: uid
+        }
+        await CHANNEL.sendMessage({text: JSON.stringify(messageObj)})
+    })
+
+
+    CHANNEL.on('ChannelMessage', async (message, senderId) => {
+        console.log('Message Received: ', message)
+    })
+}
+
 let joinAndDisplayLocalStream = async () => {
 
     client.on('user-published', handleUserJoined)
     
     client.on('user-left', handleUserLeft)
-    client.on('user-message', handleUserMessage)
+    client.on('user_message', handleMessage)
+
+    
     
     let UID = await client.join(APP_ID, CHANNEL, TOKEN, null)
 
+
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks() 
+    
 
     let player = `<div class="video-container" id="user-container-${UID}">
                         <div class="video-player" id="user-${UID}"></div>
@@ -34,8 +70,8 @@ let joinStream = async () => {
     document.getElementById('stream-controls').style.display = 'flex'
     document.getElementById('message_control').style.display = 'flex'
     document.getElementById('message__form').style.display = 'flex'
-    document.getElementById('message__wrapper').style.display = 'flex'
     
+
 
 }
 
@@ -77,6 +113,8 @@ let leaveAndRemoveLocalStream = async () => {
     document.getElementById('join-btn').style.display = 'block'
     document.getElementById('stream-controls').style.display = 'none'
     document.getElementById('message_control').style.display = 'none'
+    document.getElementById('message_control').style.display = 'none'
+    document.getElementById('message__form').style.display = 'flex'
     document.getElementById('video-streams').innerHTML = ''
 }
 
