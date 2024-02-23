@@ -120,7 +120,7 @@ button{
   
   .message__body strong {
     font-weight: 600;
-    color: #73b5d1;
+    color: #000000;
   }
   
   .message__body__bot{
@@ -138,7 +138,7 @@ button{
   
   .message__author__bot {
     margin-right: 10px;
-    color: #082131!important;
+    color: #a2b6c3!important;
   
   }
   
