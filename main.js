@@ -198,6 +198,49 @@ document.getElementById('mic-btn').addEventListener('click', toggleMic)
 //         document.body.classList.toggle('dark-mode');
 //     });
 // });
+// Initialize Agora RTM Client
+let rtmClient;
+
+// Function to initialize RTM client
+const initRTM = async () => {
+    rtmClient = AgoraRTM.createInstance(APP_ID);
+    await rtmClient.login({uid});
+    rtmChannel = rtmClient.createChannel(roomId);
+    await rtmChannel.join();
+    rtmChannel.on('ChannelMessage', ({ text }, senderId) => {
+        // Display received message in chat display
+        displayChatMessage(senderId, text);
+    });
+}
+
+// Function to send a message to the RTM channel
+const sendRTMMessage = async (message) => {
+    await rtmChannel.sendMessage({ text: message });
+}
+
+// Display chat messages in the chat display area
+const displayChatMessage = (senderId, message) => {
+    const chatDisplay = document.getElementById('chat-display');
+    const messageElement = document.createElement('div');
+    messageElement.textContent = `${senderId}: ${message}`;
+    chatDisplay.appendChild(messageElement);
+}
+
+// Function to handle sending a message when Enter is pressed
+const handleChatInput = (event) => {
+    if (event.key === 'Enter') {
+        const message = event.target.value;
+        sendRTMMessage(message);
+        event.target.value = ''; // Clear the input box after sending the message
+    }
+}
+
+// Initialize the RTM client and join the RTM channel
+initRTM();
+
+// Add event listener for the chat input box
+document.getElementById('chat-input').addEventListener('keypress', handleChatInput);
+
 
 
 init()
