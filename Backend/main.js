@@ -1,5 +1,5 @@
 const APP_ID = "352d6ad86462494d904afc4cfeeda64b"
-const TOKEN = "007eJxTYMiQVNv9tu/yuvMBq1InpXpP+mnKKCn2ObfzsvJ2q0SfwEwFBmNToxSzxBQLMxMzIxNLkxRLA5PEtGST5LTU1JREM5MkfaFrqQ2BjAxbmrcyMzJAIIjPwpCbmJnHwAAAKI4fGQ=="
+let TOKEN = "007eJxTYOAt/imtUHPvl+r61MrOuJPZPXt2ipSkL0rq2LAs/vGUPcIKDMamRilmiSkWZiZmRiaWJimWBiaJackmyWmpqSmJZiZJX11vpDYEMjJMjqxiYIRCEJ+FITcxM4+BAQCS3iDi"
 const CHANNEL = "main"
 const uid = String(Math.floor(Math.random() * 232))
 
@@ -8,36 +8,95 @@ const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 let localTracks = []
 let remoteUsers = {}
 
+let sendMessage = async (e) => {
+    e.preventDefault();
+    let messageInput = document.getElementById('message_input');
+    let message = messageInput.value;
 
-let initialRTM = async () => {
-    let client = await AgoraRTM.createInstance(APP_ID)
-    await client.login({token: TOKEN, uid: uid}) // login firstly
-
-    const CHANNEL=await client.creatChannel("main") // create a channel
-    await CHANNEL.join() // join the channel
-
-    let form = document.getElementById('message__form')
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault()
-        let message = e.target.message.value
-        await CHANNEL.sendMessage({text: message, sender: uid})
-
-        form.reset()
-
-        document.getElementById('message').value = ''
-        let messageObj = {
-            text: message,
-            sender: uid
-        }
-        await CHANNEL.sendMessage({text: JSON.stringify(messageObj)})
-    })
-
-
-    CHANNEL.on('ChannelMessage', async (message, senderId) => {
-        console.log('Message Received: ', message)
-    })
+    if (message.trim() !== '') { // Check if message is not empty
+        await sendMessage(message); // Call sendMessage function from main.js
+    }
+    
+    messageInput.value = '';
+    let messageObj = {
+        message: message,
+        displayName: 'Me'
+    };
+    addmessageToDom('Me', message);
+    await CHANNEL.sendMessage({text: JSON.stringify(messageObj)});
 }
+
+let initiatRTM = async () => {
+    let  = await AgoraRTM.createInstance(APP_ID) 
+    await client.login({uid, TOKEN})
+
+      const channel = await client.createChannel(CHANNEL)
+      await channel.join()
+
+      let form = document.getElementById("form")
+
+      form.addEventListener("submit", async (e) => {
+          e.preventDefault()
+          let message = e.target.message.value
+          await channel.sendMessage({text:message, type:'text'})
+          form.reset()
+
+          handleMessage({text:message})
+      })
+
+      channel.on('ChannelMessage', (message, peerID) => {
+        console.log('Message:', message)
+        handleMessage(message)
+      })
+}
+
+let handleMessage = async (message, UID) => {
+    try {
+        console.log('Message Received: ', message);
+        let data = JSON.parse(message.text);
+        console.log('Message:', data);
+
+        // Handle the message here
+    } catch (error) {
+        console.error('Error handling message:', error);
+    }
+}
+
+let messagesContainer = document.getElementById('messages');
+messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+
+let addmessageToDom = (displayName, message) => {
+    let messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    messageElement.innerHTML = `<strong>${displayName}:</strong> ${message}`;
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; 
+
+    let messagesWrapper = document.getElementById('messages')
+
+    let newMessage = `<div class="message__wrapper">
+                        <div class="message__body">
+                            <strong class="message__author">${displayName}</strong>
+                            <p class="message__text">${message}</p>
+                        </div>
+                    </div>`
+
+    messagesWrapper.insertAdjacentHTML('beforeend', newMessage)
+
+    let lastMessage = document.querySelector('#messages .message__wrapper:last-child')
+    if(lastMessage){
+        lastMessage.scrollIntoView()
+    }
+}
+
+
+
+// Additional script for handling form submission
+let messageForm = document.getElementById('message__form');
+messageForm.addEventListener('submit', sendMessage);
+
+
 
 let joinAndDisplayLocalStream = async () => {
 
@@ -146,3 +205,4 @@ document.getElementById('join-btn').addEventListener('click', joinStream)
 document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
+document.getElementById('message__form').addEventListener('submit', sendMessage)
