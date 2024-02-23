@@ -1,103 +1,203 @@
-const APP_ID = "352d6ad86462494d904afc4cfeeda64b"
-const TOKEN = "007eJxTYJjTZKhoFe23P8JlYaptjHxYW/Yv50q12/FVoodSayYWPldgMDY1SjFLTLEwMzEzMrE0SbE0MElMSzZJTktNTUk0M0mqazme2hDIyODF8ZyZkQECQXwWhtzEzDwGBgC0fR4H"
-const CHANNEL = "main"
+let APP_ID = "309334447f2841a6b01261773a92d56b"
 
-const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
-let localTracks = []
-let remoteUsers = {}
+let token = null;
+let uid = String(Math.floor(Math.random() * 10000))
 
-let joinAndDisplayLocalStream = async () => {
+let client;
+let channel;
 
-    client.on('user-published', handleUserJoined)
-    
-    client.on('user-left', handleUserLeft)
-    
-    let UID = await client.join(APP_ID, CHANNEL, TOKEN, null)
+let queryString = window.location.search
+let urlParams = new URLSearchParams(queryString)
+let roomId = urlParams.get('room')
 
-    localTracks = await AgoraRTC.createMicrophoneAndCameraTracks() 
-
-    let player = `<div class="video-container" id="user-container-${UID}">
-                        <div class="video-player" id="user-${UID}"></div>
-                  </div>`
-    document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
-
-    localTracks[1].play(`user-${UID}`)
-    
-    await client.publish([localTracks[0], localTracks[1]])
+if(!roomId){
+    window.location = 'lobby.html'
 }
 
-let joinStream = async () => {
-    await joinAndDisplayLocalStream()
-    document.getElementById('join-btn').style.display = 'none'
-    document.getElementById('stream-controls').style.display = 'flex'
-}
+let localStream;
+let remoteStream;
+let peerConnection;
 
-let handleUserJoined = async (user, mediaType) => {
-    remoteUsers[user.uid] = user 
-    await client.subscribe(user, mediaType)
-
-    if (mediaType === 'video'){
-        let player = document.getElementById(`user-container-${user.uid}`)
-        if (player != null){
-            player.remove()
+const servers = {
+    iceServers:[
+        {
+            urls:['stun:stun1.l.google.com:19302', 'stun:stun2.l.google.com:19302']
         }
+    ]
+}
 
-        player = `<div class="video-container" id="user-container-${user.uid}">
-                        <div class="video-player" id="user-${user.uid}"></div> 
-                 </div>`
-        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
 
-        user.videoTrack.play(`user-${user.uid}`)
+let constraints = {
+    video:{
+        width:{min:640, ideal:1920, max:1920},
+        height:{min:480, ideal:1080, max:1080},
+    },
+    audio:true
+}
+
+let init = async () => {
+    client = await AgoraRTM.createInstance(APP_ID)
+    await client.login({uid, token})
+
+    channel = client.createChannel('main')
+    await channel.join()
+
+    channel.on('MemberJoined', handleUserJoined)
+    channel.on('MemberLeft', handleUserLeft)
+
+    client.on('MessageFromPeer', handleMessageFromPeer)
+
+    localStream = await navigator.mediaDevices.getUserMedia(constraints)
+    document.getElementById('user-1').srcObject = localStream
+}
+ 
+
+let handleUserLeft = (MemberId) => {
+    document.getElementById('user-2').style.display = 'none'
+    document.getElementById('user-1').classList.remove('smallFrame')
+}
+
+let handleMessageFromPeer = async (message, MemberId) => {
+
+    message = JSON.parse(message.text)
+
+    if(message.type === 'offer'){
+        createAnswer(MemberId, message.offer)
     }
 
-    if (mediaType === 'audio'){
-        user.audioTrack.play()
+    if(message.type === 'answer'){
+        addAnswer(message.answer)
+    }
+
+    if(message.type === 'candidate'){
+        if(peerConnection){
+            peerConnection.addIceCandidate(message.candidate)
+        }
+    }
+
+
+}
+
+let handleUserJoined = async (MemberId) => {
+    console.log('A new user joined the channel:', MemberId)
+    createOffer(MemberId)
+}
+
+
+let createPeerConnection = async (MemberId) => {
+    peerConnection = new RTCPeerConnection(servers)
+
+    remoteStream = new MediaStream()
+    document.getElementById('user-2').srcObject = remoteStream
+    document.getElementById('user-2').style.display = 'block'
+
+    document.getElementById('user-1').classList.add('smallFrame')
+
+
+    if(!localStream){
+        localStream = await navigator.mediaDevices.getUserMedia({video:true, audio:false})
+        document.getElementById('user-1').srcObject = localStream
+    }
+
+    localStream.getTracks().forEach((track) => {
+        peerConnection.addTrack(track, localStream)
+    })
+
+    peerConnection.ontrack = (event) => {
+        event.streams[0].getTracks().forEach((track) => {
+            remoteStream.addTrack(track)
+        })
+    }
+
+    peerConnection.onicecandidate = async (event) => {
+        if(event.candidate){
+            client.sendMessageToPeer({text:JSON.stringify({'type':'candidate', 'candidate':event.candidate})}, MemberId)
+        }
     }
 }
 
-let handleUserLeft = async (user) => {
-    delete remoteUsers[user.uid]
-    document.getElementById(`user-container-${user.uid}`).remove()
+let createOffer = async (MemberId) => {
+    await createPeerConnection(MemberId)
+
+    let offer = await peerConnection.createOffer()
+    await peerConnection.setLocalDescription(offer)
+
+    client.sendMessageToPeer({text:JSON.stringify({'type':'offer', 'offer':offer})}, MemberId)
 }
 
-let leaveAndRemoveLocalStream = async () => {
-    for(let i = 0; localTracks.length > i; i++){
-        localTracks[i].stop()
-        localTracks[i].close()
+
+let createAnswer = async (MemberId, offer) => {
+    await createPeerConnection(MemberId)
+
+    await peerConnection.setRemoteDescription(offer)
+
+    let answer = await peerConnection.createAnswer()
+    await peerConnection.setLocalDescription(answer)
+
+    client.sendMessageToPeer({text:JSON.stringify({'type':'answer', 'answer':answer})}, MemberId)
+}
+
+
+let addAnswer = async (answer) => {
+    if(!peerConnection.currentRemoteDescription){
+        peerConnection.setRemoteDescription(answer)
     }
-
-    await client.leave()
-    document.getElementById('join-btn').style.display = 'block'
-    document.getElementById('stream-controls').style.display = 'none'
-    document.getElementById('video-streams').innerHTML = ''
 }
 
-let toggleMic = async (e) => {
-    if (localTracks[0].muted){
-        await localTracks[0].setMuted(false)
-        e.target.innerText = 'Mic on'
-        e.target.style.backgroundColor = 'cadetblue'
+
+let leaveChannel = async () => {
+    await channel.leave()
+    await client.logout()
+}
+
+let toggleCamera = async () => {
+    let videoTrack = localStream.getTracks().find(track => track.kind === 'video')
+
+    if(videoTrack.enabled){
+        videoTrack.enabled = false
+        document.getElementById('camera-btn').style.backgroundColor = 'rgb(255, 80, 80)'
     }else{
-        await localTracks[0].setMuted(true)
-        e.target.innerText = 'Mic off'
-        e.target.style.backgroundColor = '#EE4B2B'
+        videoTrack.enabled = true
+        document.getElementById('camera-btn').style.backgroundColor = 'rgba(43, 32, 162, 0.9)'
     }
 }
 
-let toggleCamera = async (e) => {
-    if(localTracks[1].muted){
-        await localTracks[1].setMuted(false)
-        e.target.innerText = 'Camera on'
-        e.target.style.backgroundColor = 'cadetblue'
+let toggleMic = async () => {
+    let audioTrack = localStream.getTracks().find(track => track.kind === 'audio')
+
+    if(audioTrack.enabled){
+        audioTrack.enabled = false
+        document.getElementById('mic-btn').style.backgroundColor = 'rgb(255, 80, 80)'
     }else{
-        await localTracks[1].setMuted(true)
-        e.target.innerText = 'Camera off'
-        e.target.style.backgroundColor = '#EE4B2B'
+        audioTrack.enabled = true
+        document.getElementById('mic-btn').style.backgroundColor = 'rgba(43, 32, 162, 0.9)'
     }
 }
+// // Get the dark mode toggle button element
+// const darkModeToggle = document.getElementById('dark-mode-toggle');
 
-document.getElementById('join-btn').addEventListener('click', joinStream)
-document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
-document.getElementById('mic-btn').addEventListener('click', toggleMic)
+// // Add event listener to the button
+// darkModeToggle.addEventListener('click', () => {
+//     // Toggle the dark mode class on the body element
+//     document.body.classList.toggle('dark-mode');
+// });
+
+  
+window.addEventListener('beforeunload', leaveChannel)
+
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
+document.getElementById('mic-btn').addEventListener('click', toggleMic)
+// document.addEventListener('DOMContentLoaded', () => {
+//     // JavaScript code that interacts with the DOM goes here
+//     const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+//     // Add event listener to the button
+//     darkModeToggle.addEventListener('click', () => {
+//         // Toggle the dark mode class on the body element
+//         document.body.classList.toggle('dark-mode');
+//     });
+// });
+
+
+init()
