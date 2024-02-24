@@ -8,6 +8,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
+<<<<<<< HEAD
 
     <button id="join-btn">Join Stream</button>
     <div id="stream-wrapper">
@@ -15,14 +16,66 @@
 
         <div id="stream-controls">
             <button id="leave-btn">Leave Stream</button>
-            <button id="mic-btn">Mic On</button>    
+    
             <button id="camera-btn">Camera on</button>
             <button id="sign-trans">Sign Language on</button>
             <button id="voice-cap">Voice Capture on</button>
         </div>
+=======
+    <div id ="header">
+        <img src="images\Hearlink Logo.png" alt="Text">
+        <img src="images\hearlink text1.png" alt="Text">
+        
+        
+>>>>>>> bf5d421da75891edf053960dee8b90f735ed60ec
     </div>
+
+    <div id="videos">
+        <video class="video-player" id="user-1" autoplay playsinline></video>
+        <!-- <div class="player-name">User1</div> -->
+        <video class="video-player" id="user-2" autoplay playsinline></video>
+        <!-- <div class="player-name">user2</div> -->
+    </div>
+
+    <div id="controls">
+        <div class="control-container" id="camera-btn">
+            <img src="icons/camera.png" alt="Camera">
+        </div>
+
+        <!-- <div class="control-container" id="mic-btn">
+            <img src="icons/mic.png" alt="Microphone">
+        </div>
+     -->
+
+        <a href="lobby.html">
+            <div class="control-container" id="leave-btn">
+                <img src="icons/phone.png" alt="Phone">
+            </div>
+        </a>
+
+        <div class="control-container" id="mic-btn">
+            <img src="icons/mic.png" alt="Microphone">
+        </div>
+    
+        
+    </div>
+
+    <button id="dark-mode-toggle">
+        <div class="theme-toggle" id="dark mode">
+        <img src="icons\dark-theme.svg" alt="dark">
+        </div> 
+    </button>
+    
+    <div id="chat-box">
+        <div id="chat-display"></div>
+        <input type="text" id="chat-input" placeholder="Type your message here and press Enter">
+    </div>
+    <!-- <button id="theme-toggle">dark mode</button> -->
+    
+
+    
     
 </body>
-<script src="AgoraRTC_N-4.20.0.js"></script>
+<script src='agora-rtm-sdk-1.4.4.js'></script>
 <script src='main.js'></script>
 </html>
