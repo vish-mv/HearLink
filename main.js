@@ -1,6 +1,7 @@
 const APP_ID = "352d6ad86462494d904afc4cfeeda64b"
-const TOKEN = "007eJxTYDgodddlZ8yqWxWOhj1r0w8UWcZX7EnaOt27NbZhYj6LnaECg7GpUYpZYoqFmYmZkYmlSYqlgUliWrJJclpqakqimUnSnYVnUxsCGRnMtwkzMTJAIIjPypCbmJlnyMAAAFrgH4c="
-const CHANNEL = "main1"
+const TOKEN = "007eJxTYFir/aFba7aLe12Vt/lqwSA2S/b6/i9hbzNTd4mZCJT+WajAYGxqlGKWmGJhZmJmZGJpkmJpYJKYlmySnJaampJoZpJ0XvlaakMgI8M+h1pWRgYIBPFZGcoyixNzGBgA1joeiw=="
+const CHANNEL = "visal"
+const {RtcTokenBuilder, RtmTokenBuilder, RtcRole, RtmRole} = require('agora-token')
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
