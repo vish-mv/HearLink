@@ -159,7 +159,7 @@ let toggleCamera = async () => {
         document.getElementById('camera-btn').style.backgroundColor = 'rgb(255, 80, 80)'
     }else{
         videoTrack.enabled = true
-        document.getElementById('camera-btn').style.backgroundColor = 'rgba(43, 32, 162, 0.9)'
+        document.getElementById('camera-btn').style.backgroundColor = '#1e2d3b'
     }
 }
 
@@ -171,54 +171,116 @@ let toggleMic = async () => {
         document.getElementById('mic-btn').style.backgroundColor = 'rgb(255, 80, 80)'
     }else{
         audioTrack.enabled = true
-        document.getElementById('mic-btn').style.backgroundColor = 'rgba(43, 32, 162, 0.9)'
+        document.getElementById('mic-btn').style.backgroundColor = '#1e2d3b'
     }
 }
-// // Get the dark mode toggle button element
-// const darkModeToggle = document.getElementById('dark-mode-toggle');
-
-// // Add event listener to the button
-// darkModeToggle.addEventListener('click', () => {
-//     // Toggle the dark mode class on the body element
-//     document.body.classList.toggle('dark-mode');
-// });
-
   
 window.addEventListener('beforeunload', leaveChannel)
 
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
-// document.addEventListener('DOMContentLoaded', () => {
-//     // JavaScript code that interacts with the DOM goes here
-//     const darkModeToggle = document.getElementById('dark-mode-toggle');
 
-//     // Add event listener to the button
-//     darkModeToggle.addEventListener('click', () => {
-//         // Toggle the dark mode class on the body element
-//         document.body.classList.toggle('dark-mode');
-//     });
-// });
-// Initialize Agora RTM Client
-let rtmClient;
+
+init()
+// Function to toggle dark mode
+const toggleDarkMode = () => {
+    document.body.classList.toggle('dark-mode');
+    
+    // Get a reference to the theme toggle button
+    const themeToggleButton = document.querySelector('.theme-toggle');
+
+    // Toggle the button's color based on the presence of 'dark-mode' class
+    if (document.body.classList.contains('dark-mode')) {
+        themeToggleButton.style.backgroundColor = 'rgba(139, 138, 146, 0.9)'; // when dark mode is enabled
+    } else {
+        themeToggleButton.style.backgroundColor = '#585959'; // Change to original color when dark mode is disabled
+    }
+}
+
+// Event listener for the theme toggle button
+document.querySelector('.theme-toggle').addEventListener('click', toggleDarkMode);
+
+let rtmClient = AgoraRTM.createInstance(APP_ID);
+
+let rtmChannel;
 
 // Function to initialize RTM client
 const initRTM = async () => {
-    rtmClient = AgoraRTM.createInstance(APP_ID);
-    await rtmClient.login({uid});
-    rtmChannel = rtmClient.createChannel(roomId);
-    await rtmChannel.join();
-    rtmChannel.on('ChannelMessage', ({ text }, senderId) => {
-        // Display received message in chat display
-        displayChatMessage(senderId, text);
-    });
+    try {
+        rtmClient = AgoraRTM.createInstance(APP_ID);
+        await rtmClient.login({ uid });
+        rtmChannel = rtmClient.createChannel(roomId);
+        await rtmChannel.join();
+        rtmChannel.on('ChannelMessage', ({ text }, senderId) => {
+            // Display received message in chat display
+            displayChatMessage(senderId, text);
+        });
+    } catch (error) {
+        console.error('Error initializing RTM:', error);
+    }
 }
 
 // Function to send a message to the RTM channel
+// const sendRTMMessage = async (message) => {
+//     try {
+//         // Send the message to the RTM channel
+//         await rtmChannel.sendMessage({ text: message });
+
+//         // Display the sent message in the chat display
+//         displayChatMessage('You', message); 
+//     } catch (error) {
+//         console.error('Error sending message:', error);
+//     }
+// }
+// Function to send a message to the RTM channel
+// const sendRTMMessage = async (message) => {
+//     try {
+//         if (rtmClient) {
+//             // Check if the client is logged in, if not, attempt to log in
+//             if (!rtmClient.isLoggedIn()) {
+//                 await rtmClient.login({ uid }); // Log in the client
+//             }
+            
+//             // Send the message
+//             await rtmChannel.sendMessage({ text: message });
+//             displayChatMessage('You', message); // Display sent message in chat display
+//         } else {
+//             console.error('RTM client is not initialized. Cannot send message.');
+//         }
+//     } catch (error) {
+//         console.error('Error sending message:', error);
+//     }
+// }
+// Function to send a message to the RTM channel
+// const sendRTMMessage = async (message) => {
+//     try {
+//         if (rtmClient && typeof rtmClient.isLoggedIn === 'function' && rtmClient.isLoggedIn()) {
+//             await rtmChannel.sendMessage({ text: message });
+//             displayChatMessage('You', message); // Display sent message in chat display
+//         } else {
+//             displayChatMessage('You', message);
+//         }
+//     } catch (error) {
+//         console.error('Error sending message:', error);
+//     }
+// }
+
+// Function to handle incoming messages from the RTM channel
+rtmChannel.on('ChannelMessage', ({ text }, senderId) => {
+    displayChatMessage(senderId, text);
+});
+
+// Function to send a message to the RTM channel
 const sendRTMMessage = async (message) => {
-    await rtmChannel.sendMessage({ text: message });
+    try {
+        await rtmChannel.sendMessage({ text: message });
+        displayChatMessage('You', message); // Display sent message in chat display
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
 }
 
-// Display chat messages in the chat display area
+// Function to display chat messages in the chat display area
 const displayChatMessage = (senderId, message) => {
     const chatDisplay = document.getElementById('chat-display');
     const messageElement = document.createElement('div');
@@ -226,21 +288,32 @@ const displayChatMessage = (senderId, message) => {
     chatDisplay.appendChild(messageElement);
 }
 
-// Function to handle sending a message when Enter is pressed
+// Event listener for the chat input box
+document.getElementById('chat-input').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        const message = event.target.value.trim();
+        if (message !== '') {
+            sendRTMMessage(message);
+            event.target.value = ''; // Clear the input box after sending the message
+        }
+    }
+});
+
+
 const handleChatInput = (event) => {
     if (event.key === 'Enter') {
-        const message = event.target.value;
-        sendRTMMessage(message);
-        event.target.value = ''; // Clear the input box after sending the message
+        const message = event.target.value.trim();
+        if (message !== '') {
+            console.log('Sending message:', message); // Log the message being sent
+            sendRTMMessage(message);
+            event.target.value = ''; // Clear the input box after sending the message
+        }
     }
 }
+
 
 // Initialize the RTM client and join the RTM channel
 initRTM();
 
 // Add event listener for the chat input box
 document.getElementById('chat-input').addEventListener('keypress', handleChatInput);
-
-
-
-init()
