@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const app = express();
 const cors = require('cors');
 const AgoraRTC = require('agora-rtc-sdk-ng');
@@ -40,4 +40,4 @@ app.get('/token', (req, res) => {
 });
 
 // Server listens on port 3000
-app.listen(3000, () => console.log('Server listening on port 3000'));
+app.listen(3000, () => console.log('Server listening on port 3000'));*/

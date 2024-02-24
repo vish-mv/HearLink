@@ -1,12 +1,12 @@
 const APP_ID = "352d6ad86462494d904afc4cfeeda64b"
 
-//const TOKEN = "007eJxTYGj55MT17KWelElHG7c5j8Bu/XWnONY/yWn03sUkl3dY8bACg7GpUYpZYoqFmYmZkYmlSYqlgUliWrJJclpqakqimUkSw7krqQ2BjAyT1a8zMEIhiM/CkJuYmcfAAACywh3u"
+const TOKEN = "007eJxTYHD0fHK4Mjkgg/GJkUVQX9zyk17FpZ3PzV4aXFPefbHy7WUFBmNToxSzxBQLMxMzIxNLkxRLA5PEtGST5LTU1JREM5Ok0PabqQ2BjAyLfvGxMjJAIIjPwpCbmJnHwAAAihwg8w=="
 
-//const CHANNEL = "main"
+const CHANNEL = "main"
 
-//
-const TOKEN_URL = 'http://localhost:3000/token';
-//
+
+//const TOKEN_URL = 'http://localhost:3000/token';
+
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
@@ -16,7 +16,7 @@ let remoteUsers = {}
 
 
 
-/*let joinAndDisplayLocalStream = async (roomId) => {
+let joinAndDisplayLocalStream = async (roomId) => {
 
     
     client.on('user-published', handleUserJoined)
@@ -46,14 +46,14 @@ let remoteUsers = {}
     document.getElementById('stream-controls').style.display = 'flex'
     
 }*/
-/*let joinStream = async () => {
+let joinStream = async () => {
     const roomId = document.getElementById('room').value.toUpperCase(); // Get the room name from input field
     await joinAndDisplayLocalStream(roomId);
     document.getElementById('join-btn').style.display = 'none';
     document.getElementById('stream-controls').style.display = 'flex';
-}*/
+}
 
-async function joinAndDisplayLocalStream(channelName, userId) {
+/*async function joinAndDisplayLocalStream(channelName, userId) {
     client.on('user-published', handleUserJoined);
     client.on('user-left', handleUserLeft);
   
@@ -80,7 +80,7 @@ async function joinAndDisplayLocalStream(channelName, userId) {
     await joinAndDisplayLocalStream(`meeting_${roomName}`, userId);
     document.getElementById('join-btn').style.display = 'none';
     document.getElementById('stream-controls').style.display = 'flex';
-  }
+  }*/
   
 
 
