@@ -266,13 +266,43 @@ const initRTM = async () => {
 // }
 
 // Function to handle incoming messages from the RTM channel
-let sendMessage = async (e) => {
+
+
+// Initialize Agora RTM client and set up chat functionality
+
+const CHANNEL = 'main';
+
+const initiatRTM = async () => {
+    try {
+        rtmClient = AgoraRTM.createInstance(APP_ID);
+        await rtmClient.login({ uid });
+        rtmChannel = rtmClient.createChannel(CHANNEL);
+        await rtmChannel.join();
+        rtmChannel.on('ChannelMessage', ({ text }, senderId) => {
+            // Display received message in chat display
+            displayChatMessage(senderId, text);
+        });
+    } catch (error) {
+        console.error('Error initializing RTM:', error);
+    }
+}
+
+const sendMessageToRTMChannel = async (message) => {
+    try {
+        await rtmChannel.sendMessage({ text: message });
+        displayChatMessage('You', message); // Display sent message in chat display
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
+}
+
+const sendMessage = async (e) => {
     e.preventDefault();
     let messageInput = document.getElementById('chat-input');
     let message = messageInput.value;
 
     if (message.trim() !== '') { // Check if message is not empty
-        await sendMessage(message); // Call sendMessage function from main.js
+        await sendMessageToRTMChannel(message); // Call sendMessage function from main.js
     }
     
     messageInput.value = '';
@@ -281,50 +311,9 @@ let sendMessage = async (e) => {
         displayName: 'Me'
     };
     addmessageToDom('Me', message);
-    await CHANNEL.sendMessage({text: JSON.stringify(messageObj)});
 }
 
-let initiatRTM = async () => {
-    let  = await AgoraRTM.createInstance(APP_ID) 
-    await client.login({uid, token})
-
-      const channel = await client.createChannel(CHANNEL)
-      await channel.join()
-
-      let form = document.getElementById("chat-input")
-
-      form.addEventListener("submit", async (e) => {
-          e.preventDefault()
-          let message = e.target.message.value
-          await channel.sendMessage({text:message, type:'text'})
-          form.reset()
-
-          handleMessage({text:message})
-      })
-
-      channel.on('ChannelMessage', (message, peerID) => {
-        console.log('Message:', message)
-        handleMessage(message)
-      })
-}
-
-let handleMessage = async (message, UID) => {
-    try {
-        console.log('Message Received: ', message);
-        let data = JSON.parse(message.text);
-        console.log('Message:', data);
-
-        // Handle the message here
-    } catch (error) {
-        console.error('Error handling message:', error);
-    }
-}
-
-let messagesContainer = document.getElementById('chat-box');
-messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-
-let addmessageToDom = (displayName, message) => {
+const addmessageToDom = (displayName, message) => {
     let messageElement = document.createElement('div');
     messageElement.classList.add('message');
     messageElement.innerHTML = `<strong>${displayName}:</strong> ${message}`;
@@ -347,3 +336,4 @@ let addmessageToDom = (displayName, message) => {
         lastMessage.scrollIntoView()
     }
 }
+
