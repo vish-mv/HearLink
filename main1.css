@@ -185,6 +185,7 @@
     
     .control-container:hover {
         background-color: rgb(25, 73, 98); /* Darken the background color on hover */
+        transform: scale(1.1);
     }
     
     .control-container img {
@@ -195,6 +196,7 @@
     
     #leave-btn {
         background-color: rgb(255, 80, 80, 1);
+        
     }
     
     
@@ -240,6 +242,7 @@
 }
 .theme-toggle:hover {
     background-color: rgba(139, 138, 146, 0.9); /* Darken the background color on hover */
+    transform: scale(1.1);
 }
 
 /* Style for the dark mode icon */
@@ -254,7 +257,7 @@
     /* border: 1px solid #4565a4; */
     border-radius: 15px;
     padding: 10px;
-    height: 500px; /* Adjust height as needed */
+    height: 450px; /* Adjust height as needed */
     width: 300px;
     overflow-y:auto; /* Enable vertical scrolling */
     margin-bottom: 20px; /* Add space between chat display and input box */
@@ -280,3 +283,27 @@
     right: 20px; /* Adjust right spacing as needed */
     
 }
+/* Styling for the settings button */
+.settings {
+    width: 45px; /* Adjust width as needed */
+    height: 45px; /* Adjust height as needed */
+    cursor: pointer; /* Set cursor to pointer on hover */
+    position: absolute; /* Position the button relative to the viewport */
+    top: 25px; /* Adjust distance from the top as needed */
+    right: 75px; /* Adjust distance from the right as needed */
+    z-index: 9999; /* Ensure the button is above other content */
+    transition: transform 0.3s ease; /* Add smooth transition effect */
+}
+
+.settings img {
+    width: 100%; /* Ensure the image fills the container */
+    height: 100%; /* Ensure the image fills the container */
+}
+
+/* Add hover effect */
+.settings:hover {
+    transform: scale(1.1); /* Increase size on hover */
+    
+}
+
+/* Add any additional styling as needed */
