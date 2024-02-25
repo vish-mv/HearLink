@@ -282,12 +282,12 @@
 }
 /* Styling for the settings button */
 .settings {
-    width: 40px; /* Adjust width as needed */
-    height: 40px; /* Adjust height as needed */
+    width: 45px; /* Adjust width as needed */
+    height: 45px; /* Adjust height as needed */
     cursor: pointer; /* Set cursor to pointer on hover */
-    position: fixed; /* Position the button relative to the viewport */
-    top: 20px; /* Adjust distance from the top as needed */
-    right: 55px; /* Adjust distance from the right as needed */
+    position: absolute; /* Position the button relative to the viewport */
+    top: 25px; /* Adjust distance from the top as needed */
+    right: 75px; /* Adjust distance from the right as needed */
     z-index: 9999; /* Ensure the button is above other content */
     transition: transform 0.3s ease; /* Add smooth transition effect */
 }
