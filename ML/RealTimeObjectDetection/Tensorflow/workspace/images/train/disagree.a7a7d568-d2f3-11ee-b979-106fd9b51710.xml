@@ -1,0 +1,26 @@
+<annotation>
+	<folder>collectedimages</folder>
+	<filename>disagree.a7a7d568-d2f3-11ee-b979-106fd9b51710.jpg</filename>
+	<path>F:\Git\HearLink\HearLink\ML\RealTimeObjectDetection\Tensorflow\workspace\images\collectedimages\disagree.a7a7d568-d2f3-11ee-b979-106fd9b51710.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Disagree</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>82</xmin>
+			<ymin>139</ymin>
+			<xmax>196</xmax>
+			<ymax>337</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>collectedimages</folder>
+	<filename>agree.6a7eec53-d2f3-11ee-86cd-106fd9b51710.jpg</filename>
+	<path>F:\Git\HearLink\HearLink\ML\RealTimeObjectDetection\Tensorflow\workspace\images\collectedimages\agree.6a7eec53-d2f3-11ee-86cd-106fd9b51710.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Agree</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>58</xmin>
+			<ymin>253</ymin>
+			<xmax>187</xmax>
+			<ymax>480</ymax>
+		</bndbox>
+	</object>
+</annotation>

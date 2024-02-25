@@ -1,7 +1,7 @@
 <annotation>
-	<folder>collectedimages</folder>
+	<folder>New folder</folder>
 	<filename>no.5f2c7b38-cb73-11ee-b9dc-0ee6e93464f5.jpg</filename>
-	<path>F:\SDGP\New\RealTimeObjectDetection\Tensorflow\workspace\images\collectedimages\no.5f2c7b38-cb73-11ee-b9dc-0ee6e93464f5.jpg</path>
+	<path>F:\Git\HearLink\HearLink\ML\RealTimeObjectDetection\Tensorflow\workspace\images\collectedimages\New folder\no.5f2c7b38-cb73-11ee-b9dc-0ee6e93464f5.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
@@ -17,10 +17,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>91</xmin>
-			<ymin>157</ymin>
-			<xmax>331</xmax>
-			<ymax>322</ymax>
+			<xmin>127</xmin>
+			<ymin>167</ymin>
+			<xmax>329</xmax>
+			<ymax>312</ymax>
 		</bndbox>
 	</object>
 </annotation>

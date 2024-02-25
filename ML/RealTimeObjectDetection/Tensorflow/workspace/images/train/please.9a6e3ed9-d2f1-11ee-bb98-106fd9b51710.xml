@@ -1,0 +1,26 @@
+<annotation>
+	<folder>New folder</folder>
+	<filename>please.9a6e3ed9-d2f1-11ee-bb98-106fd9b51710.jpg</filename>
+	<path>F:\Git\HearLink\HearLink\ML\RealTimeObjectDetection\Tensorflow\workspace\images\collectedimages\New folder\please.9a6e3ed9-d2f1-11ee-bb98-106fd9b51710.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Please</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>303</xmin>
+			<ymin>304</ymin>
+			<xmax>476</xmax>
+			<ymax>467</ymax>
+		</bndbox>
+	</object>
+</annotation>

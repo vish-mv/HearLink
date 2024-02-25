@@ -1,0 +1,26 @@
+<annotation>
+	<folder>New folder</folder>
+	<filename>later.7b261645-d2f0-11ee-94fa-106fd9b51710.jpg</filename>
+	<path>F:\Git\HearLink\HearLink\ML\RealTimeObjectDetection\Tensorflow\workspace\images\collectedimages\New folder\later.7b261645-d2f0-11ee-94fa-106fd9b51710.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Later</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>42</xmin>
+			<ymin>105</ymin>
+			<xmax>266</xmax>
+			<ymax>305</ymax>
+		</bndbox>
+	</object>
+</annotation>
