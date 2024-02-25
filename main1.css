@@ -185,6 +185,7 @@
     
     .control-container:hover {
         background-color: rgb(25, 73, 98); /* Darken the background color on hover */
+        transform: scale(1.1);
     }
     
     .control-container img {
@@ -195,6 +196,7 @@
     
     #leave-btn {
         background-color: rgb(255, 80, 80, 1);
+        
     }
     
     
@@ -240,6 +242,7 @@
 }
 .theme-toggle:hover {
     background-color: rgba(139, 138, 146, 0.9); /* Darken the background color on hover */
+    transform: scale(1.1);
 }
 
 /* Style for the dark mode icon */
