@@ -197,8 +197,32 @@ const toggleDarkMode = () => {
     }
 }
 
+
 // Event listener for the theme toggle button
 document.querySelector('.theme-toggle').addEventListener('click', toggleDarkMode);
+
+const toggleScreenShare = () => {
+    document.body.classList.toggle('screen-sharing'); // Toggle the screen sharing class
+    
+    // Get a reference to the screen share button
+    const screenShareButton = document.querySelector('.Screenshare');
+
+    // Toggle the button's color based on the presence of 'screen-sharing' class
+    if (document.body.classList.contains('screen-sharing')) {
+        screenShareButton.style.backgroundColor = 'rgb(17, 133, 161)'; // Set the active color when screen sharing is enabled
+    } else {
+        screenShareButton.style.backgroundColor = '#585959'; // Set the normal color when screen sharing is disabled
+    }
+
+    // Your logic to toggle screen sharing feature goes here
+}
+// Get a reference to the screen share button
+const screenShareButton = document.getElementById('screen');
+
+// Add event listener to toggle screen share when clicked
+screenShareButton.addEventListener('click', toggleScreenShare);
+
+
 
 let rtmClient = AgoraRTM.createInstance(APP_ID);
 
