@@ -290,12 +290,28 @@ const initRTM = async () => {
 // }
 
 // Function to handle incoming messages from the RTM channel
-rtmChannel.on('ChannelMessage', ({ text }, senderId) => {
-    displayChatMessage(senderId, text);
-});
 
-// Function to send a message to the RTM channel
-const sendRTMMessage = async (message) => {
+
+// Initialize Agora RTM client and set up chat functionality
+
+const CHANNEL = 'main';
+
+const initiatRTM = async () => {
+    try {
+        rtmClient = AgoraRTM.createInstance(APP_ID);
+        await rtmClient.login({ uid });
+        rtmChannel = rtmClient.createChannel(CHANNEL);
+        await rtmChannel.join();
+        rtmChannel.on('ChannelMessage', ({ text }, senderId) => {
+            // Display received message in chat display
+            displayChatMessage(senderId, text);
+        });
+    } catch (error) {
+        console.error('Error initializing RTM:', error);
+    }
+}
+
+const sendMessageToRTMChannel = async (message) => {
     try {
         await rtmChannel.sendMessage({ text: message });
         displayChatMessage('You', message); // Display sent message in chat display
@@ -304,40 +320,44 @@ const sendRTMMessage = async (message) => {
     }
 }
 
-// Function to display chat messages in the chat display area
-const displayChatMessage = (senderId, message) => {
-    const chatDisplay = document.getElementById('chat-display');
-    const messageElement = document.createElement('div');
-    messageElement.textContent = `${senderId}: ${message}`;
-    chatDisplay.appendChild(messageElement);
+const sendMessage = async (e) => {
+    e.preventDefault();
+    let messageInput = document.getElementById('chat-input');
+    let message = messageInput.value;
+
+    if (message.trim() !== '') { // Check if message is not empty
+        await sendMessageToRTMChannel(message); // Call sendMessage function from main.js
+    }
+    
+    messageInput.value = '';
+    let messageObj = {
+        message: message,
+        displayName: 'Me'
+    };
+    addmessageToDom('Me', message);
 }
 
-// Event listener for the chat input box
-document.getElementById('chat-input').addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        const message = event.target.value.trim();
-        if (message !== '') {
-            sendRTMMessage(message);
-            event.target.value = ''; // Clear the input box after sending the message
-        }
-    }
-});
+const addmessageToDom = (displayName, message) => {
+    let messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    messageElement.innerHTML = `<strong>${displayName}:</strong> ${message}`;
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; 
 
+    let messagesWrapper = document.getElementById('chat-box')
 
-const handleChatInput = (event) => {
-    if (event.key === 'Enter') {
-        const message = event.target.value.trim();
-        if (message !== '') {
-            console.log('Sending message:', message); // Log the message being sent
-            sendRTMMessage(message);
-            event.target.value = ''; // Clear the input box after sending the message
-        }
+    let newMessage = `<div id="chat-box">
+                        <div id="chat-display">
+                            <strong class="message__author">${displayName}</strong>
+                            <p class="message__text">${message}</p>
+                        </div>
+                    </div>`
+
+    messagesWrapper.insertAdjacentHTML('beforeend', newMessage)
+
+    let lastMessage = document.querySelector('#chat-box #chat-box:last-child')
+    if(lastMessage){
+        lastMessage.scrollIntoView()
     }
 }
 
-
-// Initialize the RTM client and join the RTM channel
-initRTM();
-
-// Add event listener for the chat input box
-document.getElementById('chat-input').addEventListener('keypress', handleChatInput);
