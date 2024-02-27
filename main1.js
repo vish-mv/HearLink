@@ -176,6 +176,7 @@ let toggleMic = async () => {
         document.getElementById('mic-btn').style.backgroundColor = '#1e2d3b'
     }
 }
+
   
 window.addEventListener('beforeunload', leaveChannel)
 
