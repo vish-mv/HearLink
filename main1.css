@@ -251,11 +251,8 @@
 }
 
 
-
-
-/* update this part
 /* Initial display settings */
-.settings-panel, .audio-settings-box, .video-settings-box, .screen-share-settings-box {
+.settings-panel, .audio-settings-box, .video-settings-box, .details-settings-box {
     display: none;
     position: fixed;
     top: 50%;
@@ -308,4 +305,3 @@
     background-color: hsl(233, 45%, 28%);
 }
 
-/*

@@ -51,6 +51,7 @@ let init = async () => {
 
     localStream = await navigator.mediaDevices.getUserMedia(constraints)
     document.getElementById('user-1').srcObject = localStream
+
 }
  
 
@@ -381,11 +382,9 @@ document.querySelectorAll('.setting-button').forEach(function(button) {
 
 document.querySelectorAll('.close-button').forEach(function(button) {
     button.addEventListener('click', function() {
-        this.closest('.settings-panel, .audio-settings-box, .video-settings-box').style.display = 'none';
+        this.closest('.settings-panel, .audio-settings-box, .video-settings-box, .details-settings-box').style.display = 'none';
     });
 });
-
-//update this
 
 let screenStream; // Variable to store the screen share stream
 let screenSharingActive = false; // Variable to track the screen sharing state
@@ -428,6 +427,48 @@ const replaceVideoStream = (newStream) => {
 }
 
 // Event listener to toggle screen sharing when the screen share button is clicked
-document.getElementById('screen-share-settings-box').addEventListener('click', toggleScreenSharing);
+document.getElementById('screen').addEventListener('click', toggleScreenSharing);
 
+//update this part
+// Function to get and display available video input devices
+const getVideoDevices = async () => {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const videoDevices = devices.filter(device => device.kind === 'videoinput');
+
+    // Select the video settings box and the dropdown menu
+    const videoSettingsBox = document.getElementById('video-settings-box');
+    const videoDeviceSelect = videoSettingsBox.querySelector('#video-device-select');
+
+    // Clear existing options
+    videoDeviceSelect.innerHTML = '';
+
+    // Add options for each video device
+    videoDevices.forEach(device => {
+        const option = document.createElement('option');
+        option.value = device.deviceId;
+        option.text = device.label || `Camera ${videoDeviceSelect.options.length + 1}`;
+        videoDeviceSelect.appendChild(option);
+    });
+};
+
+// Function to handle camera selection change
+const handleCameraChange = async () => {
+    const selectedDeviceId = document.getElementById('video-device-select').value;
+
+    // Update constraints with selected device
+    constraints.video.deviceId = { exact: selectedDeviceId };
+
+    // Refresh the local video stream with new constraints
+    localStream = await navigator.mediaDevices.getUserMedia(constraints);
+    document.getElementById('user-1').srcObject = localStream;
+};
+
+// Call getVideoDevices to populate the dropdown menu initially
+getVideoDevices();
+
+// Event listener for video settings box display
+document.getElementById('video').addEventListener('click', getVideoDevices);
+
+// Event listener for camera selection change
+document.getElementById('video-settings-box').addEventListener('change', handleCameraChange);
 //
