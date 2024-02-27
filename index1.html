@@ -15,7 +15,7 @@
     </div>
 
 
-  <!-- update this part-->
+
 <div class="settings" id="settings">
     <img src="icons\Settings-icon.png" alt="settings">
 </div>
@@ -28,7 +28,7 @@
     <div class="settings-content">
         <button class="setting-button" data-target="audio">Audio</button>
         <button class="setting-button" data-target="video">Video</button>
-        <button class="setting-button" id="screen-share-settings-box" data-target="screen-share">Screen Share</button>
+        <button class="setting-button" data-target="details">Meeting Details</button>
     </div>
 </div>
 
@@ -41,9 +41,22 @@
     <p> wertyui rtyuio qwertyui </p>
 </div>
 
+<!-- update this part -->
 <div class="video-settings-box" id="video-settings-box">
     <div class="settings-header">
         <h2>Video Settings</h2>
+        <button class="close-button">×</button>
+    </div>
+    <div>
+        <label for="video-device-select">Select Camera:</label>
+        <select id="video-device-select"></select>
+    </div>
+</div>
+<!---->
+
+<div class="details-settings-box" id="details-settings-box">
+    <div class="settings-header">
+        <h2>Meeting Details </h2>
         <button class="close-button">×</button>
     </div>
     <!-- Add video settings content here -->
@@ -52,7 +65,6 @@
 
 
 
-<!----->
     
     
     
