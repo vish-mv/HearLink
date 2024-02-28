@@ -19,6 +19,7 @@ let localStream;
 let remoteStream;
 let peerConnection;
 
+
 const servers = {
     iceServers:[
         {
@@ -162,6 +163,7 @@ let toggleCamera = async () => {
         document.getElementById('camera-btn').style.backgroundColor = '#1e2d3b'
     }
 }
+
 
 let toggleMic = async () => {
     let audioTrack = localStream.getTracks().find(track => track.kind === 'audio')
@@ -361,3 +363,70 @@ const addmessageToDom = (displayName, message) => {
     }
 }
 
+
+//settings button part
+
+document.getElementById('settings').addEventListener('click', function() {
+    document.getElementById('settings-panel').style.display = 'block';
+});
+
+document.querySelectorAll('.setting-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        var target = this.getAttribute('data-target');
+        document.getElementById('settings-panel').style.display = 'none';
+        document.getElementById(target + '-settings-box').style.display = 'block';
+    });
+});
+
+document.querySelectorAll('.close-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        this.closest('.settings-panel, .audio-settings-box, .video-settings-box').style.display = 'none';
+    });
+});
+
+//update this
+
+let screenStream; // Variable to store the screen share stream
+let screenSharingActive = false; // Variable to track the screen sharing state
+
+// Function to start screen sharing
+const startScreenSharing = async () => {
+    try {
+        screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+        // Replace the user's video stream with the screen share stream
+        replaceVideoStream(screenStream);
+        screenSharingActive = true; // Set screen sharing state to active
+    } catch (error) {
+        console.error('Error starting screen sharing:', error);
+    }
+}
+
+// Function to stop screen sharing
+const stopScreenSharing = () => {
+    if (screenStream) {
+        screenStream.getTracks().forEach(track => track.stop());
+        // Replace the screen share stream with the user's original video stream
+        replaceVideoStream(localStream); // Assuming localStream contains the user's camera feed
+        screenSharingActive = false; // Set screen sharing state to inactive
+    }
+}
+
+// Function to toggle screen sharing
+const toggleScreenSharing = () => {
+    if (screenSharingActive) {
+        stopScreenSharing(); // If screen sharing is active, stop it
+    } else {
+        startScreenSharing(); // If screen sharing is inactive, start it
+    }
+}
+
+// Function to replace the video stream in the UI
+const replaceVideoStream = (newStream) => {
+    // Replace the video element's srcObject with the new stream
+    document.getElementById('user-1').srcObject = newStream; // Assuming 'user-1' is the user's video element
+}
+
+// Event listener to toggle screen sharing when the screen share button is clicked
+document.getElementById('screen-share-settings-box').addEventListener('click', toggleScreenSharing);
+
+//
