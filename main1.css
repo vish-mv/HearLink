@@ -271,7 +271,7 @@
 }
 
 /* Chat Input Box */
-#chat-input {
+#form, #chat-input {
     width: calc(21% - 22px); /* Adjust width to account for padding and border */
     padding: 8px; /* Add padding to the input box */
     border: 1px solid #ccc;

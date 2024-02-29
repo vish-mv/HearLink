@@ -270,13 +270,13 @@ const initRTM = async () => {
 
 // Initialize Agora RTM client and set up chat functionality
 
-const CHANNEL = 'main';
 
 const initiatRTM = async () => {
+    channel = client.createChannel('main')
     try {
         rtmClient = AgoraRTM.createInstance(APP_ID);
         await rtmClient.login({ uid });
-        rtmChannel = rtmClient.createChannel(CHANNEL);
+        rtmChannel = rtmClient.createChannel(channel);
         await rtmChannel.join();
         rtmChannel.on('ChannelMessage', ({ text }, senderId) => {
             // Display received message in chat display
@@ -291,6 +291,7 @@ const sendMessageToRTMChannel = async (message) => {
     try {
         await rtmChannel.sendMessage({ text: message });
         displayChatMessage('You', message); // Display sent message in chat display
+        await rtmChannel.sendMessage({ text: message });
     } catch (error) {
         console.error('Error sending message:', error);
     }
@@ -301,24 +302,25 @@ const sendMessage = async (e) => {
     let messageInput = document.getElementById('chat-input');
     let message = messageInput.value;
 
-    if (message.trim() !== '') { // Check if message is not empty
-        await sendMessageToRTMChannel(message); // Call sendMessage function from main.js
+    if (message.trim() !== '') { 
+        await sendMessageToRTMChannel(message); 
     }
     
     messageInput.value = '';
     let messageObj = {
         message: message,
         displayName: 'Me'
-    };
+    }
+    await channel.sendMessage({text: JSON.stringify(messageObj)})
+
     addmessageToDom('Me', message);
 }
 
 const addmessageToDom = (displayName, message) => {
-    let messageElement = document.createElement('div');
-    messageElement.classList.add('message');
-    messageElement.innerHTML = `<strong>${displayName}:</strong> ${message}`;
-    messagesContainer.appendChild(messageElement);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight; 
+    onst chatDisplay = document.getElementById('chat-display');
+    const messageElement = document.createElement('div');
+    messageElement.textContent = `${displayName}: ${message}`;
+    chatDisplay.appendChild(messageElement);
 
     let messagesWrapper = document.getElementById('chat-box')
 

@@ -25,7 +25,7 @@
         <video class="video-player" id="user-1" autoplay playsinline></video>
         <!-- <div class="player-name">User1</div> -->
         <video class="video-player" id="user-2" autoplay playsinline></video>
-        <!-- <div class="player-name">user2</div> -->
+        <!-- <div class="player-name">user2</div>  -->
     </div>
 
     <div id="controls">
@@ -33,10 +33,10 @@
             <img src="icons/camera.png" alt="Camera">
         </div>
 
-        <!-- <div class="control-container" id="mic-btn">
+        <div class="control-container" id="mic-btn">
             <img src="icons/mic.png" alt="Microphone">
         </div>
-     -->
+     
 
         <a href="lobby.html">
             <div class="control-container" id="leave-btn">
@@ -44,10 +44,7 @@
             </div>
         </a>
 
-        <div class="control-container" id="mic-btn">
-            <img src="icons/mic.png" alt="Microphone">
-        </div>
-    
+        
         
     </div>
 
@@ -63,18 +60,60 @@
         <div id="chat-display">
             <strong class="message__author">author 1</strong>
             <p class="message__text">preeee</p>
-            <input type="text" id="chat-input" placeholder="Type your message here and press Enter">
 
         </div>
     </div>
+
+        <form id="form">
+        <input type="text" name="message" id="chat__input" />
+      </form>
     <!-- <button id="theme-toggle">dark mode</button> -->
     
 
+
+    <!-- <div id="stream-wrapper">
+        <div id="video-streams"></div>
+
+        <div id="stream-controls">
+            <button id="leave-btn">Leave Stream</button>
+            <button id="mic-btn">Mic On</button>
+            <button id="camera-btn">Camera on</button>
+            <button id="sign-trans">Sign Language on</button>
+            <button id="voice-cap">Voice Capture on</button>
+        </div>
+    </div>
+
+    <div id="message_control">
+
+        <div id="messages">
+            <div class="message__wrapper">
+                
+                <div class="message__body">
+                    <strong class="message__author">Shahriar P. Shuvo 👋</strong>  
+                    <p class="message__text">Does 
+                        anyone know hen he will be 
+                        back?</p>
+                </div>
+            </div>
+            <div class="message__wrapper">
+                 
+                <div class="message__body">
+                    <strong class="message__author">Sulamita</strong> 
+                    <p class="message__text">Great stream!</p>
+                </div>
+            </div>
+        </div>
+
+        <form id="message__form">
+            <input type="text" name="message" placeholder="Send a message...." />
+        </form>
+
+    </div> -->
     
     
 </body>
-<script src='agora-rtm-sdk-1.4.4.js'></script>
-<script src='main1.js'></script>
-</body>
+    <script src='agora-rtm-sdk-1.4.4.js'></script>
+    <script src="AgoraRTC_N-4.20.0.js"></script>
+    <script src='main1.js'></script>
 
 </html>
