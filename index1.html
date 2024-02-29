@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>HearLink</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main1.css'>
+</head>
+<body>
+    <div id ="header">
+        <img src="images\Hearlink Logo.png" alt="Text">
+        <img src="images\hearlink text1.png" alt="Text">
+           
+    </div>
+
+
+
+<div class="settings" id="settings">
+    <img src="icons\Settings-icon.png" alt="settings">
+</div>
+
+<div class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+        <h2>Settings</h2>
+        <button class="close-button">×</button>
+    </div>
+    <div class="settings-content">
+        <button class="setting-button" data-target="audio">Audio</button>
+        <button class="setting-button" data-target="video">Video</button>
+        <button class="setting-button" data-target="details">Meeting Details</button>
+    </div>
+</div>
+
+<div class="audio-settings-box" id="audio-settings-box">
+    <div class="settings-header">
+        <h2>Audio Settings</h2>
+        <button class="close-button">×</button>
+    </div>
+    <!-- Add audio settings content here -->
+    <p> wertyui rtyuio qwertyui </p>
+</div>
+
+<!-- update this part -->
+<div class="video-settings-box" id="video-settings-box">
+    <div class="settings-header">
+        <h2>Video Settings</h2>
+        <button class="close-button">×</button>
+    </div>
+    <div>
+        <label for="video-device-select">Select Camera:</label>
+        <select id="video-device-select"></select>
+    </div>
+</div>
+<!---->
+
+<div class="details-settings-box" id="details-settings-box">
+    <div class="settings-header">
+        <h2>Meeting Details </h2>
+        <button class="close-button">×</button>
+    </div>
+    <!-- Add video settings content here -->
+    <p> wertyui rtyuio qwertyui </p>
+</div>
+
+
+
+    
+    
+    
+
+    <div id="videos">
+        <video class="video-player" id="user-1" autoplay playsinline></video>
+        <!-- <div class="player-name">User1</div> -->
+        <video class="video-player" id="user-2" autoplay playsinline></video>
+        <!-- <div class="player-name">user2</div> -->
+    </div>
+
+    <div id="controls">
+        <div class="control-container" id="camera-btn">
+            <img src="icons/camera.png" alt="Camera">
+        </div>
+
+        <a href="lobby.html">
+            <div class="control-container" id="leave-btn">
+                <img src="icons/phone.png" alt="Phone">
+            </div>
+        </a>
+
+        <div class="control-container" id="mic-btn">
+            <img src="icons/mic.png" alt="Microphone">
+        </div>
+    
+        
+    </div>
+
+    
+    <div class="theme-toggle" id="dark mode">
+         <img src="icons\dark-theme.svg" alt="dark">
+    </div> 
+    
+    <div class="Screenshare" id="screen">
+        <img src="icons\share-screen-icon-512x385-154w5rzi.png" alt="screen">
+   </div> 
+
+
+
+    
+    
+
+    <div id="chat-box">
+        <div id="chat-display">
+            <strong class="message__author">author 1</strong>
+            <p class="message__text">preeee</p>
+            <input type="text" id="chat-input" placeholder="Type your message here and press Enter">
+
+        </div>
+    </div>
+    <!-- <button id="theme-toggle">dark mode</button> -->
+    
+
+    
+    
+</body>
+<script src='agora-rtm-sdk-1.4.4.js'></script>
+<script src='main1.js'></script>
+</html>
