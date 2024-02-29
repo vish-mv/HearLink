@@ -132,6 +132,23 @@
             width: 100%; /* Adjust video container and player width for smaller screens */
         }
     }
+    
+    @media screen and (max-width: 992px) {
+        /* Adjust styles for screens up to 992px */
+        .smallFrame {
+            height: 120px; /* Adjust height for smaller screens */
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        /* Adjust styles for screens up to 768px */
+        .smallFrame {
+            height: 100px; /* Further adjust height for smaller screens */
+        }
+    }
+    
+    /* Add more media queries as needed for different screen sizes */
+    
 
     /* Dark mode styles */
 /* Dark mode styles */
