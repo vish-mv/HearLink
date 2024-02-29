@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import backLogo from "../src/assets/backLogo.png";
 
  
 
@@ -17,6 +18,10 @@ const Home = () => {
         <div className=" ">
           {/* Hero */}
           <div className="relative h-screen ">
+
+          <div className="absolute h-full w-full flex overflow-hidden">
+            <img src={backLogo} alt="backLogo" className="object-cover  w-full h-full" />
+          </div>
 
             {/* Overlay */}
             <div className="absolute h-full w-full flex overflow-hidden bg-black/60"></div>
