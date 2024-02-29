@@ -428,5 +428,3 @@ const replaceVideoStream = (newStream) => {
 
 // Event listener to toggle screen sharing when the screen share button is clicked
 document.getElementById('screen-share-settings-box').addEventListener('click', toggleScreenSharing);
-
-//
