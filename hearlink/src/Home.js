@@ -19,7 +19,7 @@ const Home = () => {
           {/* Hero */}
           <div className="relative h-screen ">
 
-          <div className="absolute h-full w-full flex overflow-hidden">
+          <div className="absolute max-h-[30rem] flex overflow-hidden">
             <img src={backLogo} alt="backLogo" className="object-cover  w-full h-full" />
           </div>
 
@@ -35,14 +35,19 @@ const Home = () => {
                 
               </div>
     
-              {/* Enter Code */}
-              <form
-                onSubmit={submitCode}
-                className="text-white md:pt-12 flex flex-col items-center justify-center"
+              {/* Hero Info */}
+              <div className="relative z-10 px-4">
+                {/* Main */}
+                <div className="pb-8">
+                  <h1 className="text-[56px] text-white font-bold"> Video Chat App</h1>
+                  <p className="text-[26px] text-white -mt-2"> Welcome to HearLink</p>
+                </div>
 
-              >
-                <div className=" flex flex-col justify-center items-center">
-                  <label className="text-[30px] md:text-[40px] font-bold pt-6">
+
+                {/* Enter code*/}
+                <form onSubmit={submitCode} className="text-white">
+                <div className="flex flex-col justify-center ">
+                  <label className="text-[30px] font-bold">
                     Enter Room Code
                   </label>
                   <input
@@ -51,6 +56,7 @@ const Home = () => {
                     placeholder="Enter Room Code"
                     value={RoomCode}
                     onChange={(e) => setRoomCode(e.target.value)}
+    
                     className="py-1.5 md:py-2 px-4 rounded-full max-w-[14rem] mt-2 text-black md:mt-6 outline-0"
                   />
                 </div>
@@ -61,7 +67,7 @@ const Home = () => {
                 >
                   Go
                 </button>
-              </form>
+              </form></div>
             </div>
           </div>
         </div>
