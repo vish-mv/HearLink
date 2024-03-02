@@ -135,24 +135,23 @@ code {
   height:15%; 
   width: 100%;
   overflow: hidden;
-  background-color: #21262C;
+  background-color:#21262C;
 }
 
 .logo2{
-  height: 70%;  
+  height: 80%; 
+  padding: 7px; 
   object-fit: cover; 
+  margin-left: 1px;
 
 }
 
 .logo1{
-  height: 80%;;
+  height: 90%;
+  margin-left: 3px;
   
-  right: 10%;
+  
+  right: 20%;
   object-fit: cover; 
-  position: absolute; /* Make logo element absolutely positioned */
-  top: 0; /* Position it at the top of the container */
-  right: 0; /* Position it at the right of the container */
-  /* Adjust other styles (size, margin, etc.) as needed */
 
 }
-
