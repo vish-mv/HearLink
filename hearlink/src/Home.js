@@ -35,7 +35,8 @@ const Home = () => {
               
               
     
-              
+              <br/>
+              <br/>
               <div className="main_details">
                
                 <div className="login_detail">
@@ -48,21 +49,26 @@ const Home = () => {
                 <form onSubmit={submitCode} className="text-white">
                 <div className="lobby_code ">
                   <label className="lable">Name</label>
+                  
                   <input
                     type="text"
                     required
                     placeholder="Enter Name"
-                    className="input_code"></input>
-
+                    className="input_code" id = "name"></input>
+                  <br/>
+                  
                   <label className="lable">Select Your Type</label>  
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter Name"
-                    className="input_code"></input>
+  
+                  <select id = "Your_type" className="input_code">
+                    <option id = "Deaf">I am a Deaf User</option>
+                    <option id = "Healthy">I am a Healthy User</option>
+                  </select>
+                  <br/>
+
                   <label className="lable">
-                    Enter Room Code
+                    Enter lobby Code
                   </label>
+                  
                   <input
                     type="text"
                     required
