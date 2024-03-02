@@ -151,5 +151,10 @@ code {
   width: 10%;
   right: 10%;
   object-fit: cover; 
+  position: absolute; /* Make logo element absolutely positioned */
+  top: 0; /* Position it at the top of the container */
+  right: 0; /* Position it at the right of the container */
+  /* Adjust other styles (size, margin, etc.) as needed */
 
 }
+
