@@ -22,8 +22,8 @@ const Home = () => {
           <div className="main">
 
             <div className="logo">
-              <img src={logo2} className="logo1"></img>
-              <img src={logo1} className="logo2"></img>
+              <img src={logo2} className="logo2"></img>
+              <img src={logo1} className="logo1"></img>
             </div>
             <div className="background_img">
               <img src={backLogo} alt="backLogo" className="object-cover" />

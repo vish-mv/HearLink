@@ -50,7 +50,7 @@ const Room = () => {
         <div>
             <div style={{ background: "#21262C", padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <img src={logoImage} alt="First Image" style={{ width: "80px", height: "auto",marginLeft: "5px",padding:"2px" }} />
+                    <img src={logoImage} alt="First Image" style={{ width: "80px", height: "auto",marginLeft: "5px",padding:"2px",position:"absolute",top:0, right:0}} />
                     <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
                 </div>
                 
