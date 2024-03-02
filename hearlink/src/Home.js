@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import backLogo from "../src/assets/backLogo.png";
+import backLogo from "../src/images/sideImg.png";
+import logo1 from "../src/images/hearlink text1.png";
+import logo2 from "../src/images/Hearlink Logo.png";
+import "../src/index.css"
 
  
 
@@ -16,38 +19,48 @@ const Home = () => {
 
       return (
         <div className=" ">
-          {/* Hero */}
-          <div className="relative h-screen ">
+          <div className="main">
 
-          <div className="absolute max-h-[30rem] flex overflow-hidden">
-            <img src={backLogo} alt="backLogo" className="object-cover  w-full h-full" />
-          </div>
+            <div className="logo">
+              <img src={logo1} className="logo1"></img>
+              <img src={logo2} className="logo2"></img>
+            </div>
+            <div className="background_img">
+              <img src={backLogo} alt="backLogo" className="object-cover" />
+            </div>
 
-            {/* Overlay */}
-            <div className="absolute h-full w-full flex overflow-hidden bg-black/60"></div>
-            {/* Hero Info */}
-            <div className="lg:flex lg:pt-20 flex-col items-center justify-center relative z-10 px-6 md:max-w-[90vw] mx-auto">
-              {/* Main */}
-              <div className=" flex flex-col items-center justify-center pb-8">
-                <h1 className="text-[50px] md:text-[80px] text-white font-bold pt-12">
-                  HearLink
-                </h1>
-                
-              </div>
+          
+            
+            <div className="main_login">
+              
+              
     
-              {/* Hero Info */}
-              <div className="relative z-10 px-4">
-                {/* Main */}
-                <div className="pb-8">
-                  <h1 className="text-[56px] text-white font-bold"> Video Chat App</h1>
-                  <p className="text-[26px] text-white -mt-2"> Welcome to HearLink</p>
+              
+              <div className="main_details">
+               
+                <div className="login_detail">
+                  <h1 className="main_name"> LOGIN</h1>
+                  <p className="welcome"> Welcome to HearLink</p>
                 </div>
 
 
-                {/* Enter code*/}
+                
                 <form onSubmit={submitCode} className="text-white">
-                <div className="flex flex-col justify-center ">
-                  <label className="text-[30px] font-bold">
+                <div className="lobby_code ">
+                  <label className="lable">Name</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter Name"
+                    className="input_code"></input>
+
+                  <label className="lable">Select Your Type</label>  
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter Name"
+                    className="input_code"></input>
+                  <label className="lable">
                     Enter Room Code
                   </label>
                   <input
@@ -57,12 +70,12 @@ const Home = () => {
                     value={RoomCode}
                     onChange={(e) => setRoomCode(e.target.value)}
     
-                    className="py-1.5 md:py-2 px-4 rounded-full max-w-[14rem] mt-2 text-black md:mt-6 outline-0"
+                    className="input_code"
                   />
                 </div>
                 <button
                   type="submit"
-                  className=" bg-blue-500 hover:bg-blue-400 duration-100 ease-out font-bold w-[5rem] md:w-[7rem] rounded-full py-[5px] md:py-[7px] mt-2 md:mt-4 "
+                  className="submit_button"
 
                 >
                   Go
