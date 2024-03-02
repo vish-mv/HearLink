@@ -43,7 +43,7 @@ const Room = () => {
                     <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
                 </div>
             </div>
-            <div ref={containerRef} style={{ width: "100vw", height: "calc(100vh - 150px)" }}>
+            <div ref={containerRef} style={{ width: "100vw", height: "calc(100vh - 117px)" }}>
                 {/* Video container will be mounted here */}
             </div>
         </div>
