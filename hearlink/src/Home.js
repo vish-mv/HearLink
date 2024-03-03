@@ -40,46 +40,53 @@ const Home = () => {
           <div className="login_detail">
             <h1 className="main_name"> LOGIN</h1>
           </div>
-          <form onSubmit={submitCode} className="text-white">
-            <div className="lobby_code ">
-              <label className="lable">Name</label>
+          <div className="wrapper">
+            <form onSubmit={submitCode} className="text-white">
+              <h1><span className='word'>Hear</span><span className='wordColor'>Link</span></h1>
+              <h6><span className='wordColor'>Connecting Worlds: <span className='word'>HearLink</span> where communication knows no bonds.</span></h6>
+              <h1 className="main_name"> LOGIN</h1>
 
-              <input
-                type="text"
-                required
-                placeholder="Enter Name"
-                className="input_code" id="name"></input>
-              <br />
+              <div className="lobby_code ">
+                <label className="lable">Name</label>
 
-              <label className="lable">Select Your Type</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter Name"
+                  className="input_code" id="name"></input>
+                <br />
 
-              <select id="Your_type" className="input_code">
-                <option id="Deaf">I am a Deaf User</option>
-                <option id="Healthy">I am a Healthy User</option>
-              </select>
-              <br />
+                <label className="lable">Select Your Type</label>
 
-              <label className="lable">
-                Enter lobby Code
-              </label>
+                <select id="Your_type" className="input_code">
+                  <option id="Deaf">I am a Deaf User</option>
+                  <option id="Healthy">I am a Healthy User</option>
+                </select>
+                <br />
 
-              <input
-                type="text"
-                required
-                placeholder="Enter Room Code"
-                value={RoomCode}
-                onChange={(e) => setRoomCode(e.target.value)}
+                <label className="lable">
+                  Enter lobby Code
+                </label>
 
-                className="input_code" />
-            </div>
-            <button
-              type="submit"
-              className="submit_button"
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter Room Code"
+                  value={RoomCode}
+                  onChange={(e) => setRoomCode(e.target.value)}
 
-            >
-              Go
-            </button>
-          </form></div>
+                  className="input_code" />
+              </div>
+              <button
+                type="submit"
+                className="submit_button"
+
+              >
+                Go
+              </button>
+            </form></div>
+          </div>
+          
             
             <div className="background_img">
               <img src={backLogo} alt="backLogo" className="object-cover" />
