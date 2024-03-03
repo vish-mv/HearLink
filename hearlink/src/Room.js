@@ -4,7 +4,7 @@ import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 
 import logoLight from "./assets/Log short Dark.png";
 import logoDark from "./assets/Logo short light.png";
-import textLight from "./assets/hearlink text1.png";
+import textLight from "./assets/hearlink text2.png";
 import textDark from "./assets/hearlink text1.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
