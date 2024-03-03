@@ -68,13 +68,14 @@ const Room = () => {
                 </div>
             </div>
             <div style={{ position: "fixed", bottom: "20px", left: "20px", zIndex: "999", borderRadius: "50px" }}>
-                <button 
-                    onClick={toggleTheme} 
-                    className="bg-gray-500 text-gray-800 font-semibold hover:text-white py-5 px-5 rounded-full flex items-center" 
-                    style={{ cursor: "pointer" }}
-                >
-                    <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
-                </button>
+            <button 
+    onClick={toggleTheme} 
+    className="bg-gray-500 text-gray-800 font-semibold hover:text-white py-20 px-20 rounded-full flex items-center" 
+    style={{ cursor: "pointer", borderRadius: "9999px" }} // Setting a high value for border-radius
+>
+    <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
+</button>
+
             </div>
 
 
