@@ -45,4 +45,23 @@
   .themebutton:hover{
     background-color: rgb(198, 209, 255);
   }
+  .logo{
+    width: 360px;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: none;
+    position: absolute;
+    top: 1px;
+    left: 10px;
+  }
+  .main_name{
+    font-size: 55px;
+    text-align: justify;
+    margin-left: 40px;
+    margin-top: 90px;
+    color: blue;
+    font-family: poppins;
+  }
   
