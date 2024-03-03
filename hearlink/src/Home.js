@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import backLogo from "../src/images/sideImg.png";
-import logo1 from "../src/images/hearlink text1.png";
-import logo2 from "../src/images/Hearlink Logo.png";
+import logoImage from "./assets/Light_2.png";
+import textImage from "./assets/hearlink text1.png";
 import "../src/index.css"
+
 
  
 
@@ -21,19 +22,22 @@ const Home = () => {
         <div className=" ">
           <div className="main">
 
-            <div className="logo">
-              <img src={logo2} className="logo2"></img>
-              <img src={logo1} className="logo1"></img>
+          <div style={{  padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <img src={logoImage} alt="First Image" style={{ width: "200px", height: "auto",margin: "20px",padding:"2px",position:"absolute",top:0, right:0}} />
+                    <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
+                </div>
+                
             </div>
-            <div className="background_img">
-              <img src={backLogo} alt="backLogo" className="object-cover" />
-            </div>
-
+            
           
             
             <div className="main_login">
               
-              
+              <div className="background_img">
+              <img src={backLogo} alt="backLogo" className="object-cover" />
+            </div>
+
     
               <br/>
               <br/>
