@@ -27,7 +27,7 @@ const Room = () => {
                 serverSecret,
                 roomID,
                 Date.now().toString(),
-                "andrei" // Change this as necessary
+                "name" // Change this as necessary
             );
             const zp = ZegoUIKitPrebuilt.create(kitToken);
 
@@ -50,7 +50,7 @@ const Room = () => {
         <div>
             <div style={{ background: "#21262C", padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <img src={logoImage} alt="First Image" style={{ width: "80px", height: "auto",marginLeft: "5px",padding:"2px",position:"absolute",top:0, right:0}} />
+                    <img src={logoImage} alt="First Image" style={{ width: "75px", height: "auto",marginLeft: "5px",padding:"2px"}} />
                     <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
                 </div>
                 
@@ -67,7 +67,7 @@ const Room = () => {
 
 
            
-            <div ref={containerRef} style={{ width: "100vw", height: "calc(100vh - 117px)" }}>
+            <div ref={containerRef} style={{ width: "100vw", height: "calc(100vh - 110px)" }}>
                 {/* Video container will be mounted here */}
             </div>
         </div>

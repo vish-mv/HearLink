@@ -32,8 +32,6 @@ const Home = () => {
           
             
             <div className="main_login">
-              
-              
     
               <br/>
               <br/>
