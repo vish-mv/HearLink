@@ -7,15 +7,14 @@ import "../src/index.css"
 import "./assets/Home.css"
 
 
- 
-
 const Home = () => {
     const [RoomCode, setRoomCode] = useState("");
+    const [name, setName] = useState(""); // State to manage the name
     const navigate = useNavigate();
 
     const submitCode = (e) => {
         e.preventDefault();
-        navigate(`/room/${RoomCode}`);
+        navigate(`/room/${RoomCode}`, { state: { name } }); // Pass the name as state
       };
 
 
@@ -25,6 +24,7 @@ const Home = () => {
 
           <div style={{  padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center" }}>
+                    <img src={logoImage} alt="First Image" style={{ width: "200px", height: "auto",margin: "20px",padding:"2px",position:"absolute",top:0, right:0}} />
                     <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
                 </div>
           </div>
@@ -44,8 +44,7 @@ const Home = () => {
           <div className="login_detail">
             <h1 className="main_name"> LOGIN</h1>
           </div>
-          <div>
-            <form onSubmit={submitCode} className="text-white">
+          <form onSubmit={submitCode} className="text-white">
             <div className="lobby_code ">
               <label className="lable">Name</label>
 
@@ -53,7 +52,11 @@ const Home = () => {
                 type="text"
                 required
                 placeholder="Enter Name"
-                className="input_code" id="name"></input>
+                className="input_code" 
+                id="name" 
+                value={name} // Set value to name state
+                onChange={(e) => setName(e.target.value)} // Update name state
+              />
               <br />
 
               <label className="lable">Select Your Type</label>
@@ -73,20 +76,16 @@ const Home = () => {
                 required
                 placeholder="Enter Room Code"
                 value={RoomCode}
-                onChange={(e) => setRoomCode(e.target.value)}
+                onChange={(e) => setRoomCode(e.target.value)} className="input_code"></input>
 
-                className="input_code"></input>
             </div>
             <button
               type="submit"
               className="submit_button"
-
             >
               Go
             </button>
           </form></div>
-          </div>
-          
             
             <div className="background_img">
               <img src={backLogo} alt="backLogo" className="object-cover" />
@@ -99,4 +98,5 @@ const Home = () => {
     };
     
     export default Home;
+
     
