@@ -36,55 +36,52 @@ const Home = () => {
             
   
           <div className="main_details">
+          <h1><span className='word'>Hear</span><span className='wordColor'>Link</span></h1>
 
           <div className="login_detail">
             <h1 className="main_name"> LOGIN</h1>
           </div>
-          <div className="wrapper">
+          <div>
             <form onSubmit={submitCode} className="text-white">
-              <h1><span className='word'>Hear</span><span className='wordColor'>Link</span></h1>
-              <h6><span className='wordColor'>Connecting Worlds: <span className='word'>HearLink</span> where communication knows no bonds.</span></h6>
-              <h1 className="main_name"> LOGIN</h1>
+            <div className="lobby_code ">
+              <label className="lable">Name</label>
 
-              <div className="lobby_code ">
-                <label className="lable">Name</label>
+              <input
+                type="text"
+                required
+                placeholder="Enter Name"
+                className="input_code" id="name"></input>
+              <br />
 
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter Name"
-                  className="input_code" id="name"></input>
-                <br />
+              <label className="lable">Select Your Type</label>
 
-                <label className="lable">Select Your Type</label>
+              <select id="Your_type" className="input_code">
+                <option id="Deaf">I am a Deaf User</option>
+                <option id="Healthy">I am a Healthy User</option>
+              </select>
+              <br />
 
-                <select id="Your_type" className="input_code">
-                  <option id="Deaf">I am a Deaf User</option>
-                  <option id="Healthy">I am a Healthy User</option>
-                </select>
-                <br />
+              <label className="lable">
+                Enter lobby Code
+              </label>
 
-                <label className="lable">
-                  Enter lobby Code
-                </label>
+              <input
+                type="text"
+                required
+                placeholder="Enter Room Code"
+                value={RoomCode}
+                onChange={(e) => setRoomCode(e.target.value)}
 
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter Room Code"
-                  value={RoomCode}
-                  onChange={(e) => setRoomCode(e.target.value)}
+                className="input_code" />
+            </div>
+            <button
+              type="submit"
+              className="submit_button"
 
-                  className="input_code" />
-              </div>
-              <button
-                type="submit"
-                className="submit_button"
-
-              >
-                Go
-              </button>
-            </form></div>
+            >
+              Go
+            </button>
+          </form></div>
           </div>
           
             
