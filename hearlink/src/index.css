@@ -17,34 +17,6 @@ code {
     monospace;
 }
 
-.main{
-  position: relative; 
-  height: 100vh;
-}
-
-
-.object-cover{
-  display: flex;
-  object-fit: cover; 
-  right: 100%;
-  
-}
-.background_img{
-  position:fixed; 
-  top: 25%;  
-  right: 10%;
-  width: 700px;
-  height: 580px;
-  overflow: hidden;
-}
-
-.main_login{
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 100%; 
-}
 
 .title{
   display: flex; 
