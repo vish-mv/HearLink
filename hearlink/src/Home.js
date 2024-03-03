@@ -33,6 +33,9 @@ const Home = () => {
           
             
             <div className="main_login">
+            <div className="background_img">
+              <img src={backLogo} alt="backLogo" className="object-cover" />
+            </div>
     
               <><br /><br /><div className="main_details">
 
