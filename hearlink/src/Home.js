@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import backLogo from "../src/images/sideImg.png";
-import logoImage from "./assets/Logo short light.png";
 import textImage from "./assets/hearlink text1.png";
 import "../src/index.css"
 import "./assets/Home.css"
@@ -24,8 +23,7 @@ const Home = () => {
 
           <div style={{  padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <img src={logoImage} alt="First Image" style={{ width: "200px", height: "auto",margin: "20px",padding:"2px",position:"absolute",top:0, right:0}} />
-                    <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
+                    <img src={textImage} alt="Second_Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
                 </div>
                 
             </div>
