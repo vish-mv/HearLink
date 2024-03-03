@@ -25,7 +25,6 @@ const Home = () => {
 
           <div style={{  padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <img src={logoImage} alt="First Image" style={{ width: "200px", height: "auto",margin: "20px",padding:"2px",position:"absolute",top:0, right:0}} />
                     <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
                 </div>
                 
@@ -37,11 +36,13 @@ const Home = () => {
             
   
           <div className="main_details">
+          <h1><span className='word'>Hear</span><span className='wordColor'>Link</span></h1>
 
           <div className="login_detail">
             <h1 className="main_name"> LOGIN</h1>
           </div>
-          <form onSubmit={submitCode} className="text-white">
+          <div>
+            <form onSubmit={submitCode} className="text-white">
             <div className="lobby_code ">
               <label className="lable">Name</label>
 
@@ -81,6 +82,8 @@ const Home = () => {
               Go
             </button>
           </form></div>
+          </div>
+          
             
             <div className="background_img">
               <img src={backLogo} alt="backLogo" className="object-cover" />
