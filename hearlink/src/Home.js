@@ -45,7 +45,6 @@ const Home = () => {
                
                 <div className="login_detail">
                   <h1 className="main_name"> LOGIN</h1>
-                  <p className="welcome"> Welcome to HearLink</p>
                 </div>
 
 
