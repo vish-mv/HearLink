@@ -20,7 +20,7 @@ const Home = () => {
 
 
       return (
-        <div className=" ">
+        <div className="body-home">
           <div className="main">
 
           <div style={{  padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
