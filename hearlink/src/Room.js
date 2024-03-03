@@ -24,6 +24,7 @@ const Room = () => {
 
     useEffect(() => {
         const meeting = async () => {
+            
             const appID = 1481648916;
             const serverSecret = "b61d7a9c5ab1e42ed0d21e9caba79b1f";
             const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
@@ -38,12 +39,21 @@ const Room = () => {
             zp.joinRoom({
                 container: containerRef.current,
                 layout:"Grid",
+                sharedLinks:[
+                    {
+                        name:"Copy Link",
+                        url: `http://localhost:3000/room/${roomID}`,
+
+                    }
+                ],
                 showTextChat:"block",
                 scenario: {
                     mode: ZegoUIKitPrebuilt.GroupCall,
                 },
-                lowerLeftNotification:false,
-                showRoomDetailsButton:true,
+                
+
+                
+                
             });
         };
 
