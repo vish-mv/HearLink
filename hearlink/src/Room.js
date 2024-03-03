@@ -54,8 +54,8 @@ const Room = () => {
         additionalElements.forEach(element => {
             // Modify the styles of the elements as needed
             // Example:
-            element.style.backgroundColor = isDarkTheme ? "#000000" : "#FFFFFF";
-            element.style.color = isDarkTheme ? "#FFFFFF" : "#000000";
+            element.style.backgroundColor = isDarkTheme ? "#000000" : "#D9D9D9";
+            element.style.color = isDarkTheme ? "#D9D9D9" : "#000000";
         });
     }, [roomID, isDarkTheme]);
 
