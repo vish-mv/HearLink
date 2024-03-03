@@ -112,10 +112,12 @@ const Room = () => {
     const name = location.state ? location.state.name : "";
 
     const toggleTheme = () => {
-        setIsDarkTheme(prevTheme => !prevTheme); // Toggle the theme
-        // Here you can dynamically change the background color of the body or a container div
+        setIsDarkTheme(prevTheme => !prevTheme);
         document.body.style.backgroundColor = isDarkTheme ? "#FFFFFF" : "#0E151B";
+        
+        
     };
+    
     
     useEffect(() => {
         const meeting = async () => {
@@ -158,6 +160,9 @@ const Room = () => {
 
         // Additional logic to modify styles of specific elements
         const additionalElements = document.querySelectorAll('.QAHxuJxRZWb3P_cbR8QA, .ji5jASszKFf2CGCmbxEh');
+        const additionalElements1 = document.querySelectorAll('.D9WLyEQaARfWqCTyVrpU');
+        const additionalElements2 = document.querySelectorAll('._M8cCug8H18ALQ05cNMt','.pOvRwHj19chJGkgemUH3');
+        const additionalElements3 = document.querySelectorAll('.w8s9gCKilsV7YNRW_ZqU');
 
         additionalElements.forEach(element => {
             // Modify the styles of the elements as needed
@@ -165,6 +170,25 @@ const Room = () => {
             element.style.backgroundColor = isDarkTheme ? "#000000" : "#FFFFFF";
             element.style.color = isDarkTheme ? "#FFFFFF" : "#000000";
         });
+        additionalElements1.forEach(element => {
+            // Modify the styles of the elements as needed
+            // Example:
+            element.style.backgroundColor = isDarkTheme ? "#0E151B" : "#FFFFFF";
+            element.style.color = isDarkTheme ? "#FFFFFF" : "#000000";
+            element.style.boxShadow = isDarkTheme ? "0px 14px 24px 0px rgba(0, 0, 0, 0.1)" : "0px 14px 24px 0px rgba(14, 21, 27, 0.1)";
+        });
+        additionalElements2.forEach(element => {
+            // Remove existing classes
+            element.classList.remove('dark-custom-class', 'light-custom-class');
+        
+            // Add the appropriate class based on the isDarkTheme state
+            if (isDarkTheme) {
+                element.classList.add('light-custom-class');
+            } else {
+                element.classList.add('dark-custom-class');
+            }
+        });
+        
     }, [roomID, isDarkTheme, name]); // Include name in dependency array
 
     return (
@@ -178,7 +202,7 @@ const Room = () => {
             <div style={{ position: "fixed", bottom: "20px", left: "20px", zIndex: "999", borderRadius: "50px" }}>
                 <button 
                     onClick={toggleTheme} 
-                    className="bg-gray-500 text-gray-800 font-semibold hover:text-white py-3 px-3 rounded-full flex items-center" 
+                    className="theme-button" 
                     style={{ cursor: "pointer", borderRadius: "50%" }} // Setting border-radius to make the button fully round
                 >
                     <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
