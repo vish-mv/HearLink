@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import backLogo from "../src/images/sideImg.png";
 import logoImage from "./assets/Logo short light.png";
-import textImage from "./assets/hearlink text1.png";
+import textImage from "./assets/hearlink text2.png";
 import "../src/index.css"
 import "./assets/Home.css"
 
@@ -27,17 +27,20 @@ const Home = () => {
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
                 </div>
-                
-            </div>
+          </div>
             
-          
+        
             
           <div className="main_login">
             
-  
           <div className="main_details">
-          <h1><span className='word'>Hear</span><span className='wordColor'>Link</span></h1>
 
+          <div className="logo" >
+             <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px",}}/>
+          </div>
+          <br></br>
+          <br></br>
+            
           <div className="login_detail">
             <h1 className="main_name"> LOGIN</h1>
           </div>
@@ -72,7 +75,7 @@ const Home = () => {
                 value={RoomCode}
                 onChange={(e) => setRoomCode(e.target.value)}
 
-                className="input_code" />
+                className="input_code"></input>
             </div>
             <button
               type="submit"
