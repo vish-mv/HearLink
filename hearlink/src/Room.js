@@ -116,7 +116,7 @@ const Room = () => {
         // Here you can dynamically change the background color of the body or a container div
         document.body.style.backgroundColor = isDarkTheme ? "#FFFFFF" : "#0E151B";
     };
-
+    
     useEffect(() => {
         const meeting = async () => {
             const appID = 1481648916;
@@ -126,7 +126,7 @@ const Room = () => {
                 serverSecret,
                 roomID,
                 Date.now().toString(),
-                "name" // Use name from location state
+                name // Use name from location state
             );
             const zp = ZegoUIKitPrebuilt.create(kitToken);
 
