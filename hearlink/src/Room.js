@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 
-import logoImage from "./assets/logo.png";
+import logoImage from "./assets/Log short Dark.png";
 import textImage from "./assets/hearlink text1.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
@@ -75,7 +75,7 @@ const Room = () => {
 
     return (
         <div>
-            <div style={{ background: "#21262C", padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{  padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <img src={logoImage} alt="First Image" style={{ width: "80px", height: "auto",marginLeft: "5px",padding:"2px",position:"absolute",top:0, right:0}} />
                     <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
