@@ -9,6 +9,7 @@ import textDark from "./assets/hearlink text1.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import "../src/index.css"
+import { width } from "@fortawesome/free-solid-svg-icons/faSun";
 
 
 const Room = () => {
@@ -73,8 +74,8 @@ const Room = () => {
             <div style={{ position: "fixed", bottom: "20px", left: "20px", zIndex: "999", borderRadius: "50px" }}>
                 <button 
                     onClick={toggleTheme} 
-                    className="bg-gray-500 text-gray-800 font-semibold hover:text-white py-3 px-3 rounded-full flex items-center" 
-                    style={{ cursor: "pointer", borderRadius: "50%" }} // Setting border-radius to make the button fully round
+                    className="themebutton" 
+                    style={{ cursor: "pointer", borderRadius: "100%" ,padding:"10px"}} // Setting border-radius to make the button fully round
                 >
                     <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
                 </button>
