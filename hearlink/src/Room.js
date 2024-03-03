@@ -126,7 +126,7 @@ const Room = () => {
                 serverSecret,
                 roomID,
                 Date.now().toString(),
-                "name" // Use name from location state
+                name // Use name from location state
             );
             const zp = ZegoUIKitPrebuilt.create(kitToken);
 
@@ -135,11 +135,10 @@ const Room = () => {
                 layout:"Grid",
                 sharedLinks:[
                     {
-                        name: 'Copy link',
+                        name: 'Room Id',
                     url:
-                    window.location.protocol + '//' + 
-                    window.location.host + window.location.pathname +
-                    '?roomID=' +
+                    
+                    
                     roomID,
 
                     }
