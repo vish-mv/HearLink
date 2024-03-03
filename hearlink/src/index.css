@@ -30,9 +30,9 @@ code {
   
 }
 .background_img{
-  position: relative; 
+  position:fixed; 
   top: 25%;  
-  right: -45%;
+  right: 10%;
   width: 700px;
   height: 580px;
   overflow: hidden;
@@ -128,30 +128,50 @@ code {
   transition-timing-function: ease-out;
 }
 
-.logo{
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  height:15%; 
-  width: 100%;
-  overflow: hidden;
-  background-color:#1c1c1c;
+.M4HRY2n7rpNAd1UjDNZe{
+  display: block;
 }
 
-.logo2{
-  height: 80%; 
-  padding: 7px; 
-  object-fit: cover; 
-  margin-left: 1px;
-
-}
-
-.logo1{
-  height: 90%;
-  margin-left: 3px;
+.aUBcrib1jsrHTK9vhlVZ{
   
+}
+.QAHxuJxRZWb3P_cbR8QA{
+  display: block;
+}
+
+
+.vjwEXnTmP6jAK8LlvWL_ .QYvze2FiFrLlotTk5Iz7{   /*  Mic Button  */
+  border-radius:100%;
+}
+.vjwEXnTmP6jAK8LlvWL_ .Wlqv8YhEAE9OzBkKuKjg{    /*  Camera Button  */
+  border-radius:100%;
+}
+.vjwEXnTmP6jAK8LlvWL_ .UbpDhvufmId2nxL2l5gC{    /*  Screen Share Button  */
+  border-radius:100%;
+}
+.vjwEXnTmP6jAK8LlvWL_ .eLS4omBUBKIdRuH3vIbv{    /*  Setting and Layout Button  */
+  border-radius:100%;
+}
+.vjwEXnTmP6jAK8LlvWL_ .QeMJj1LEulq1ApqLHxuM{    /*  Leave Button  */
+  border-radius:100%;
+  width: 18px;
+}
+
+.JtRS8dNV0vDLnpBoA6kZ .QbarJSxzhe6iPp6VdlAs{    /*  Info Button  */
+  border-radius: 100%;
+}
+.JtRS8dNV0vDLnpBoA6kZ .qJdF_iTl1gv6JkFZmE2R{     /*  Participate Button  */
+  border-radius: 100%;
+}
+
+.JtRS8dNV0vDLnpBoA6kZ .aUBcrib1jsrHTK9vhlVZ{     /*  Message Button  */
+  border-radius: 100%;
   
-  right: 20%;
-  object-fit: cover; 
+}
+
+.n6GuqIk3cK3cSgL5gW1Z, .n6GuqIk3cK3cSgL5gW1Z{
 
 }
+  .UYkwihM45bjIVQZSfpze{
+    display: none;
+  }
