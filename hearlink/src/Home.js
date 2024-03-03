@@ -33,64 +33,57 @@ const Home = () => {
           
             
             <div className="main_login">
-              
-              <div className="background_img">
-              <img src={backLogo} alt="backLogo" className="object-cover" />
-            </div>
-
     
-              <br/>
-              <br/>
-              <div className="main_details">
-               
-                <div className="login_detail">
-                  <h1 className="main_name"> LOGIN</h1>
-                </div>
+              <><br /><br /><div className="main_details">
+
+          <div className="login_detail">
+            <h1 className="main_name"> LOGIN</h1>
+          </div>
 
 
-                
-                <form onSubmit={submitCode} className="text-white">
-                <div className="lobby_code ">
-                  <label className="lable">Name</label>
-                  
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter Name"
-                    className="input_code" id = "name"></input>
-                  <br/>
-                  
-                  <label className="lable">Select Your Type</label>  
-  
-                  <select id = "Your_type" className="input_code">
-                    <option id = "Deaf">I am a Deaf User</option>
-                    <option id = "Healthy">I am a Healthy User</option>
-                  </select>
-                  <br/>
 
-                  <label className="lable">
-                    Enter lobby Code
-                  </label>
-                  
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter Room Code"
-                    value={RoomCode}
-                    onChange={(e) => setRoomCode(e.target.value)}
-    
-                    className="input_code"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="submit_button"
+          <form onSubmit={submitCode} className="text-white">
+            <div className="lobby_code ">
+              <label className="lable">Name</label>
 
-                >
-                  Go
-                </button>
-              </form></div>
+              <input
+                type="text"
+                required
+                placeholder="Enter Name"
+                className="input_code" id="name"></input>
+              <br />
+
+              <label className="lable">Select Your Type</label>
+
+              <select id="Your_type" className="input_code">
+                <option id="Deaf">I am a Deaf User</option>
+                <option id="Healthy">I am a Healthy User</option>
+              </select>
+              <br />
+
+              <label className="lable">
+                Enter lobby Code
+              </label>
+
+              <input
+                type="text"
+                required
+                placeholder="Enter Room Code"
+                value={RoomCode}
+                onChange={(e) => setRoomCode(e.target.value)}
+
+                className="input_code" />
             </div>
+            <button
+              type="submit"
+              className="submit_button"
+
+            >
+              Go
+            </button>
+          </form></div></>
+            </div>
+            
           </div>
         </div>
       );

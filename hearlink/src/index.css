@@ -128,26 +128,14 @@ code {
   transition-timing-function: ease-out;
 }
 
-.M4HRY2n7rpNAd1UjDNZe{
-  display: block;
-}
-
-.aUBcrib1jsrHTK9vhlVZ{
-  
-}
-.QAHxuJxRZWb3P_cbR8QA{
-  display: block;
-}
-
-
-.vjwEXnTmP6jAK8LlvWL_ .QYvze2FiFrLlotTk5Iz7{   /*  Mic Button  */
-  border-radius:100%;
-}
-.vjwEXnTmP6jAK8LlvWL_ .Wlqv8YhEAE9OzBkKuKjg{    /*  Camera Button  */
-  border-radius:100%;
-}
-.vjwEXnTmP6jAK8LlvWL_ .UbpDhvufmId2nxL2l5gC{    /*  Screen Share Button  */
-  border-radius:100%;
+.logo{
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  height:15%; 
+  width: 100%;
+  overflow: hidden;
+  background-color:#1c1c1c;
 }
 .vjwEXnTmP6jAK8LlvWL_ .eLS4omBUBKIdRuH3vIbv{    /*  Setting and Layout Button  */
   border-radius:100%;
