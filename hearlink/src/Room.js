@@ -143,6 +143,13 @@ const Room = () => {
             zp.joinRoom({
                 container: containerRef.current,
                 layout:"Grid",
+                sharedLinks:[
+                    {
+                        name:"Copy Link",
+                        url: `http://localhost:3000/room/${roomID}`,
+
+                    }
+                ],
                 showTextChat:"block",
                 scenario: {
                     mode: ZegoUIKitPrebuilt.GroupCall,
