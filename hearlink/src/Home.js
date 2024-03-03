@@ -4,6 +4,7 @@ import backLogo from "../src/images/sideImg.png";
 import logoImage from "./assets/Light_2.png";
 import textImage from "./assets/hearlink text1.png";
 import "../src/index.css"
+import "./assets/Home.css"
 
 
  
@@ -32,19 +33,14 @@ const Home = () => {
             
           
             
-            <div className="main_login">
-            <div className="background_img">
-              <img src={backLogo} alt="backLogo" className="object-cover" />
-            </div>
-    
-              <><br /><br /><div className="main_details">
+          <div className="main_login">
+            
+  
+          <div className="main_details">
 
           <div className="login_detail">
             <h1 className="main_name"> LOGIN</h1>
           </div>
-
-
-
           <form onSubmit={submitCode} className="text-white">
             <div className="lobby_code ">
               <label className="lable">Name</label>
@@ -84,7 +80,11 @@ const Home = () => {
             >
               Go
             </button>
-          </form></div></>
+          </form></div>
+            
+            <div className="background_img">
+              <img src={backLogo} alt="backLogo" className="object-cover" />
+            </div>
             </div>
             
           </div>

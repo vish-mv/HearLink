@@ -24,26 +24,31 @@ code {
 
 
 .object-cover{
+  /*
   display: flex;
   object-fit: cover; 
   right: 100%;
-  
+  */
 }
 .background_img{
-  position:fixed; 
-  top: 25%;  
-  right: 10%;
-  width: 700px;
-  height: 580px;
-  overflow: hidden;
+  /*position:fixed; 
+
+  */
+  
+  
 }
 
 .main_login{
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: aliceblue;
+  position: fixed; 
+  width: 80%; 
+  height: 80%; 
+  border-radius: 30px;
 }
 
 .title{

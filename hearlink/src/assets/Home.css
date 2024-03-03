@@ -1,0 +1,5 @@
+body {
+    background-image: url('gback.avif'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+}
