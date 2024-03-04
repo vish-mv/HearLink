@@ -83,7 +83,7 @@ const Home = () => {
               type="submit"
               className="submit_button"
             >
-              Go
+              Join Lobby
             </button>
           </form></div>
             

@@ -32,8 +32,8 @@
     margin-right: 10%;
     background-color: aliceblue;
     position: fixed; 
-    width: 80%; 
-    height: 80%; 
+    width: 1100px;
+    height: auto; 
     border-radius: 30px;
   }
   .themebutton{
@@ -53,14 +53,14 @@
     background-size: cover;
     background-color: none;
     position: absolute;
-    top: 1px;
-    left: 10px;
+    top: 15px;
+    left: 5px;
   }
   .main_name{
     font-size: 55px;
     text-align: justify;
     margin-left: 40px;
-    margin-top: 90px;
+    margin-top: 10px;
     color: blue;
     font-family: poppins;
   }
