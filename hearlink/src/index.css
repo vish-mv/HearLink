@@ -141,6 +141,57 @@ code {
 .n6GuqIk3cK3cSgL5gW1Z, .n6GuqIk3cK3cSgL5gW1Z{
 
 }
-  .UYkwihM45bjIVQZSfpze{
-    display: none;
-  }
+.UYkwihM45bjIVQZSfpze{
+  display: none;
+}
+.dark-custom-class {
+  color: #000000 !important;
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+}
+.light-custom-class {
+  color: #ffffff !important;
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+}
+.light-setting-class {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 478px;
+  height: 346px;
+  background: #ffffff;
+  border: 1px solid var(--borderColor);
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px 0px rgba(79,79,83,0.75);
+}
+.dark-setting-class {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 478px;
+  height: 346px;
+  background: #000000;
+  border: 1px solid var(--borderColor);
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px 0px rgba(79,79,83,0.75);
+}
+.theme-icon.fa-sun {
+  color: white; /* Change color to white */
+}
+.theme-button{
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+}
+.theme-icon.fa-moon:hover {
+  color: rgb(170, 188, 247); /* Change color to white */
+}
+.theme-icon.fa-sun :hover{
+  color: rgb(170, 188, 247); 
+}
+
