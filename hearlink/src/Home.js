@@ -44,27 +44,37 @@ const Home = () => {
             <h1 className="main_name"> LOGIN</h1>
           </div>
           <form onSubmit={submitCode} className="text-white">
+
             <div className="lobby_code ">
+
               <label className="lable">Name</label>
+                <input
+                    type="text"
+                    required
+                    placeholder="Enter Name"
+                    className="input_code" 
+                    id="name" 
+                    value={name} // Set value to name state
+                    onChange={(e) => setName(e.target.value)} // Update name state
+                  />
+            </div>
+            <br></br>
 
-              <input
-                type="text"
-                required
-                placeholder="Enter Name"
-                className="input_code" 
-                id="name" 
-                value={name} // Set value to name state
-                onChange={(e) => setName(e.target.value)} // Update name state
-              />
-              <br />
-
+            <div className="lobby_code ">
+          
               <label className="lable">Select Your Type</label>
 
               <select id="Your_type" className="input_code">
-                <option id="Deaf">I am a Deaf User</option>
-                <option id="Healthy">I am a Healthy User</option>
+                  <option id="Deaf">I am a Deaf User</option>
+                  <option id="Healthy">I am a Healthy User</option>
               </select>
-              <br />
+            </div>
+
+            <br></br>
+            <hr className='line'></hr>
+            <br></br>
+
+            <div className="lobby_code ">
 
               <label className="lable">
                 Enter lobby Code
@@ -74,8 +84,9 @@ const Home = () => {
                 type="text"
                 required
                 placeholder="Enter Room Code"
+                className="input_code" 
                 value={RoomCode}
-                onChange={(e) => setRoomCode(e.target.value)} className="input_code"></input>
+                onChange={(e) => setRoomCode(e.target.value)}></input>
 
             </div>
             <button

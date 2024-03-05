@@ -68,24 +68,39 @@ code {
 }
 
 .lobby_code{
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center;
-  align-items: left;
   position: relative;
+  width: 50%;
+  height: 50px;
+  margin: 5px 0;
 }
 
 .lable{
-  font-size: 30px; 
+  font-size: 20px; 
   font-weight: bold;
+  margin-top: 0.1px;
 }
 
 .input_code{
-  padding: 10px 16px; 
-  border-radius: 9999px; 
-  max-width: 14rem; 
-  margin-top: 0.5rem; 
+  width: 150%;
+  height: 60%;
+  background: transparent;
   outline: none;
+  border: 2px solid rgba(5, 0, 1, 0.751);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.lobby_code select{
+  width: 150%;
+  height: 70%;
+  background: transparent;
+  outline: none;
+  border: 2px solid rgba(5, 0, 1, 0.751);
+  border-radius: 40px;
+  font-size: 16px;
+  color: rgb(206, 3, 3);
+  text-align: justify;
 }
 
 .submit_button{
