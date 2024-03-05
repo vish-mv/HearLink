@@ -81,7 +81,7 @@ code {
 }
 
 .input_code{
-  width: 150%;
+  width: 190%;
   height: 60%;
   background: transparent;
   outline: none;
@@ -92,7 +92,7 @@ code {
 }
 
 .lobby_code select{
-  width: 150%;
+  width: 200%;
   height: 70%;
   background: transparent;
   outline: none;

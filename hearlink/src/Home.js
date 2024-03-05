@@ -21,15 +21,6 @@ const Home = () => {
       return (
         <div className="body-home">
           <div className="main">
-
-          <div style={{  padding: "5px ", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <img src={textImage} alt="Second_Image" style={{ width: "360px", height: "auto", marginLeft: "5px" }} />
-                </div>
-          </div>
-            
-        
-            
           <div className="main_login">
             
           <div className="main_details">
