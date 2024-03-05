@@ -104,13 +104,18 @@ code {
 }
 
 .submit_button{
-  background-color: #3b82f6; 
-  color: white; 
-  font-weight: bold; 
-  width: 5rem; 
-  padding: 5px; 
-  border-radius: 9999px; 
-  margin-top: 0.5rem; 
+  width: 50%;
+  height: 40px;
+  margin-left: 100px;
+  background: #464ef2;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
   transition-duration: 0.1s; 
   transition-timing-function: ease-out;
 }

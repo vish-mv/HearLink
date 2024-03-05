@@ -28,11 +28,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 8%;
+    margin-right: 8%;
     background-color: aliceblue;
     position: fixed; 
-    width: 1000px;
+    width: 1100px;
     height: auto; 
     border-radius: 30px;
   }

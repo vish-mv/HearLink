@@ -80,6 +80,7 @@ const Home = () => {
                 onChange={(e) => setRoomCode(e.target.value)}></input>
 
             </div>
+            <br></br>
             <button
               type="submit"
               className="submit_button"
