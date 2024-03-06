@@ -62,7 +62,7 @@ const Home = () => {
             </div>
 
             <br></br>
-            <hr className='line'></hr>
+            <hr className="line"></hr>
             <br></br>
 
             <div className="lobby_code ">

@@ -92,7 +92,7 @@ code {
 }
 
 .lobby_code select{
-  width: 200%;
+  width: 195%;
   height: 70%;
   background: transparent;
   outline: none;
@@ -120,6 +120,7 @@ code {
   transition-duration: 0.1s; 
   transition-timing-function: ease-out;
 }
+
 
 /*.logo{
   position: absolute; 
