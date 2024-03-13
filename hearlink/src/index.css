@@ -122,6 +122,20 @@ code {
   transition-timing-function: ease-out;
 }
 
+#openWebcamButton{
+  border-radius: 50%;
+  padding: 10px ;
+  margin-left: 10px;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  
+}
+.icon{
+  font-size: 15px;
+  align-items: center;
+}
+
 
 /*.logo{
   position: absolute; 
