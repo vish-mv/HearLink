@@ -4,6 +4,7 @@ import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import "../src/index.css";
+import { FaHandPaper } from "react-icons/fa";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 import logoLight from "./assets/Log short Dark.png";
@@ -173,10 +174,10 @@ const Room = () => {
                 <button onClick={toggleTheme} className="theme-button" style={{ cursor: "pointer", borderRadius: "50%" }}>
                     <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
                 </button>
-                <button className="buttonClass" onClick={handleButtonClick} style={{ cursor: "pointer", borderRadius: "100%", padding: "10px", marginLeft: "10px" }}>
+                <button className="buttonClass" onClick={handleButtonClick} style={{ cursor: "pointer", borderRadius: "50%", padding: "10px", marginLeft: "10px", fontSize:"8px",}}>
                     Button A
                 </button>
-                <button id="openWebcamButton" onClick={handleOpenWebcamButtonClick}>Open Webcam and Recognize Gesture</button>
+                <button id="openWebcamButton" onClick={handleOpenWebcamButtonClick}><FaHandPaper  className="icon"/></button>
             </div>
             <div ref={containerRef} style={{ width: "100vw", height: "calc(100vh - 117px)" }}>
                 {/* Video container will be mounted here */}
