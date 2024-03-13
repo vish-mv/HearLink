@@ -120,21 +120,19 @@ code {
   transition-duration: 0.1s; 
   transition-timing-function: ease-out;
 }
-.buttonClass{
-  border-radius: 150%;
-  background-color: #494949;
 
-}
 #openWebcamButton{
-  border-radius: 100%;
-  padding: 13px 15px;
+  border-radius: 50%;
+  padding: 10px ;
   margin-left: 10px;
-  font-size: 10px;
-  text-align: center;
   text-decoration: none;
   color: black;
-  background-color: #494949;
+  background-color: white;
   
+}
+.icon{
+  font-size: 15px;
+  align-items: center;
 }
 
 
