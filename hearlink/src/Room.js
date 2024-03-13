@@ -12,14 +12,8 @@ import logoLight from "./assets/Log short Dark.png";
 import logoDark from "./assets/Logo short light.png";
 import textLight from "./assets/hearlink text2.png";
 import textDark from "./assets/hearlink text1.png";
-import { GestureRecognizer, FilesetResolver, DrawingUtils } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
-const demosSection = document.getElementById("demos");
-let gestureRecognizer;
+import { GestureRecognizer, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
 let runningMode = "IMAGE";
-let enableWebcamButton;
-let webcamRunning = false;
-const videoHeight = "360px";
-const videoWidth = "480px";
 
 
 const Room = () => {
@@ -102,7 +96,7 @@ const Room = () => {
     
 
     const startListening = () => SpeechRecognition.startListening({ continuous: false, language: 'en-US' });
-    const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition();
+    const { transcript } = useSpeechRecognition();
     
 
     useEffect(() => {
