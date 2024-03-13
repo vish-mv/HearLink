@@ -23,7 +23,7 @@ const videoWidth = "480px";
 const Room = () => {
     const { roomID } = useParams();
     const containerRef = useRef(null);
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const [isDarkTheme, setIsDarkTheme] = useState(true);
     const location = useLocation();
     const name = location.state ? location.state.name : "";
 
@@ -118,7 +118,7 @@ const Room = () => {
                     );
                     const zp = ZegoUIKitPrebuilt.create(kitToken);
 
-                    await zp.joinRoom({
+                    zp.joinRoom({
                         container: containerRef.current,
                         layout: "Grid",
                         sharedLinks: [{ name: 'Room Id', url: roomID }],
