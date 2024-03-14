@@ -28,12 +28,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 8%;
-    margin-right: 8%;
-    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 8%;
+    margin-bottom: 8%;
     background-color: aliceblue;
     position: fixed; 
-    width: 1100px;
+    width: 80%;
     height: auto; 
     border-radius: 30px;
   }
