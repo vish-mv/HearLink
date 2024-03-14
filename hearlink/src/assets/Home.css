@@ -10,17 +10,10 @@
   
   
   .object-cover{
-    /*
-    display: flex;
-    object-fit: cover; 
-    right: 100%;
-    */
+    scale: 100%;
   }
   .background_img{
-    /*position:fixed; 
-  
-    */
-    
+    scale: 100%;    
     
   }
   
@@ -70,3 +63,46 @@
     background-color: rgb(5, 4, 4);
     line-height: 2px;
   }
+
+
+  @media (max-width: 575.98px) {
+  /* Your CSS rules for extra small devices */
+}
+
+/* Small devices (phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Your CSS rules for small devices */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Your CSS rules for medium devices */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media  (max-width: 1150px) {
+  .object-cover{
+    left: 0;
+  }
+  .main_details{
+    width: 60%;
+  }
+  .background_img{
+    width: 40%;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1366px) {
+  .object-cover{
+    scale: 70%;
+  }
+  .main_details{
+    width: 80%;
+  }
+  .background_img{
+    width: 55%;
+  }
+
+
+}

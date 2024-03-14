@@ -12,6 +12,7 @@ import logoLight from "./assets/Log short Dark.png";
 import logoDark from "./assets/Logo short light.png";
 import textLight from "./assets/hearlink text2.png";
 import textDark from "./assets/hearlink text1.png";
+import { ZegoSuperBoardManager } from "zego-superboard-web";
 import { GestureRecognizer, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
 let runningMode = "IMAGE";
 
@@ -103,16 +104,18 @@ const Room = () => {
         if (containerRef.current) {
             const meeting = async () => {
                 try {
-                    const appID = 1481648916;
-                    const serverSecret = "b61d7a9c5ab1e42ed0d21e9caba79b1f";
+                    const appID = 463450622;
+                    const serverSecret = "90f79ca60820b81bed4d06f352e75e82";
                     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
                         appID,
                         serverSecret,
                         roomID,
                         Date.now().toString(),
+                        
                         name
                     );
                     const zp = ZegoUIKitPrebuilt.create(kitToken);
+                    zp.addPlugins({ZegoSuperBoardManager});
 
                     zp.joinRoom({
                         container: containerRef.current,
@@ -122,6 +125,9 @@ const Room = () => {
                         scenario: { mode: ZegoUIKitPrebuilt.GroupCall },
                         lowerLeftNotification: true,
                         showRoomDetailsButton: true,
+                        whiteboardConfig: {            
+                            //showAddImageButton: true, 
+                         },
                     });
                 } catch (error) {
                     console.error("Error joining room:", error);
@@ -169,7 +175,7 @@ const Room = () => {
                 <button onClick={toggleTheme} className="theme-button" style={{ cursor: "pointer", borderRadius: "50%" }}>
                     <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
                 </button>
-                <button className="buttonClass" onClick={handleButtonClick} style={{ cursor: "pointer", borderRadius: "50%", padding: "10px", marginLeft: "10px", fontSize:"15px",}}>
+                <button id="voicebut" className="buttonClass" onClick={handleButtonClick} style={{ cursor: "pointer", borderRadius: "50%", padding: "10px", marginLeft: "10px", fontSize:"15px",}}>
                 <MdRecordVoiceOver className="icon"/>
                 </button>
                 <button id="openWebcamButton" onClick={handleOpenWebcamButtonClick}><FaHandPaper  className="icon"/></button>
