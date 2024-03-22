@@ -23,7 +23,7 @@ jobs:
       - name: Build the React app
         run: |
           cd hearlink/src
-          npm run build
+          npm run build --no-strict
 
       - name: Deploy to GitHub Pages
         run: |
