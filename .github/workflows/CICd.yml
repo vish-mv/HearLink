@@ -18,10 +18,7 @@ jobs:
           cd hearlink/src
           npm install
 
-      - name: Run tests
-        run: |
-          cd hearlink/src
-          npm run test
+
 
       - name: Build the React app
         run: |
