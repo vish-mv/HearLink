@@ -7,14 +7,20 @@ import "../src/index.css";
 import { FaHandPaper } from "react-icons/fa";
 import { MdRecordVoiceOver } from "react-icons/md";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-
+import gestureRecognizerModel from './gesture_recognizer.task'; // Adjust the filename accordingly
 import logoLight from "./assets/Log short Dark.png";
 import logoDark from "./assets/Logo short light.png";
 import textLight from "./assets/hearlink text2.png";
 import textDark from "./assets/hearlink text1.png";
+import { ZegoSuperBoardManager } from "zego-superboard-web";
 import { GestureRecognizer, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
 let runningMode = "IMAGE";
+let data="";
 
+
+
+
+let meettest=false;
 
 const Room = () => {
     const { roomID } = useParams();
@@ -29,7 +35,7 @@ const Room = () => {
         const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm");
         const recognizer = await GestureRecognizer.createFromOptions(vision, {
             baseOptions: {
-                modelAssetPath: "https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task",
+                modelAssetPath: gestureRecognizerModel,
                 delegate: "GPU"
             },
             runningMode: runningMode
@@ -67,6 +73,21 @@ const Room = () => {
                     const categoryScore = parseFloat(results.gestures[0][0].score * 100).toFixed(2);
                     const handedness = results.handednesses[0][0].displayName;
                     console.log( `GestureRecognizer: ${categoryName}\n Confidence: ${categoryScore}%\n Handedness: ${handedness}`);
+                    if (categoryName == "del"){
+
+                    }
+                    else if (categoryName=="none"){
+
+                    }
+                    else{
+                        if (categoryName=="u"){
+                            data+=" ";
+                        }
+                        else{
+                            data+=categoryName.toString();
+                        }
+                        console.log(data);
+                    }
                 }
     
                 stream.getVideoTracks().forEach(track => track.stop());
@@ -89,9 +110,23 @@ const Room = () => {
         const sendText = document.querySelector('.xM8CBkrn0wtFOdOP84Bb input'); // Select the input element
     
         // Check if the transcript exists
-            console.log(transcript)
-            sendText.value=transcript;
-        
+        console.log(transcript);
+        sendText.focus();
+    
+        // Create a clipboard element
+        const clipboard = document.createElement('textarea');
+        clipboard.style.position = 'fixed';
+        clipboard.style.opacity = 0;
+        clipboard.value = transcript;
+        document.body.appendChild(clipboard);
+        clipboard.focus();
+        clipboard.select();
+        sendText.focus();
+        // Execute the paste action (Ctrl + V)
+        document.execCommand('paste');
+    
+        // Remove the clipboard element
+        document.body.removeChild(clipboard);
     };
     
 
@@ -103,8 +138,8 @@ const Room = () => {
         if (containerRef.current) {
             const meeting = async () => {
                 try {
-                    const appID = 1481648916;
-                    const serverSecret = "b61d7a9c5ab1e42ed0d21e9caba79b1f";
+                    const appID = 463450622;
+                    const serverSecret = "90f79ca60820b81bed4d06f352e75e82";
                     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
                         appID,
                         serverSecret,
@@ -113,6 +148,7 @@ const Room = () => {
                         name
                     );
                     const zp = ZegoUIKitPrebuilt.create(kitToken);
+                    zp.addPlugins({ZegoSuperBoardManager});
 
                     zp.joinRoom({
                         container: containerRef.current,
@@ -122,10 +158,16 @@ const Room = () => {
                         scenario: { mode: ZegoUIKitPrebuilt.GroupCall },
                         lowerLeftNotification: true,
                         showRoomDetailsButton: true,
+                        whiteboardConfig: {            
+                            //showAddImageButton: true, 
+                         },
+                         
                     });
                 } catch (error) {
                     console.error("Error joining room:", error);
                 }
+                meettest=true;
+                console.log("loaded")
             };
 
             meeting();
@@ -169,7 +211,7 @@ const Room = () => {
                 <button onClick={toggleTheme} className="theme-button" style={{ cursor: "pointer", borderRadius: "50%" }}>
                     <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
                 </button>
-                <button className="buttonClass" onClick={handleButtonClick} style={{ cursor: "pointer", borderRadius: "50%", padding: "10px", marginLeft: "10px", fontSize:"15px",}}>
+                <button id="voicebut" className="buttonClass" onClick={handleButtonClick} style={{ cursor: "pointer", borderRadius: "50%", padding: "10px", marginLeft: "10px", fontSize:"15px",}}>
                 <MdRecordVoiceOver className="icon"/>
                 </button>
                 <button id="openWebcamButton" onClick={handleOpenWebcamButtonClick}><FaHandPaper  className="icon"/></button>

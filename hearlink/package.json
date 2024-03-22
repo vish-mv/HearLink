@@ -18,7 +18,11 @@
     "socket.io": "^4.7.4",
     "socket.io-client": "^4.7.4",
     "web-vitals": "^2.1.4",
+<<<<<<< HEAD
     "zego-express-engine-webrtc": "^3.2.0"
+=======
+    "zego-superboard-web": "^2.14.1"
+>>>>>>> d22162f141cc4a590b425f5f617c72277544145e
   },
   "scripts": {
     "start": "react-scripts start",
