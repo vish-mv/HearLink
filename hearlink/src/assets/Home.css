@@ -1,0 +1,108 @@
+.body-home {
+    background-image: url('gback.avif'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+}
+.main{
+    position: relative; 
+    height: 100vh;
+  }
+  
+  
+  .object-cover{
+    scale: 100%;
+  }
+  .background_img{
+    scale: 100%;    
+    
+  }
+  
+  .main_login{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    background-color: aliceblue;
+    position: fixed; 
+    width: 80%;
+    height: auto; 
+    border-radius: 30px;
+  }
+  .themebutton{
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    transition: 0.3s ease;
+  }
+  .themebutton:hover{
+    background-color: rgb(198, 209, 255);
+  }
+  .logo{
+    width: 360px;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: none;
+    position: absolute;
+    top: 15px;
+    left: 5px;
+  }
+  .main_name{
+    font-size: 55px;
+    text-align: justify;
+    margin-left: 40px;
+    margin-top: 10px;
+    color: blue;
+    font-family: poppins;
+  }
+  .line{
+    background-color: rgb(5, 4, 4);
+    line-height: 2px;
+  }
+
+
+  @media (max-width: 575.98px) {
+  /* Your CSS rules for extra small devices */
+}
+
+/* Small devices (phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Your CSS rules for small devices */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Your CSS rules for medium devices */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media  (max-width: 1150px) {
+  .object-cover{
+    left: 0;
+  }
+  .main_details{
+    width: 60%;
+  }
+  .background_img{
+    width: 40%;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1366px) {
+  .object-cover{
+    scale: 70%;
+  }
+  .main_details{
+    width: 80%;
+  }
+  .background_img{
+    width: 55%;
+  }
+
+
+}
