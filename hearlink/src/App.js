@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/HearLink" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/room/:roomID" element={<Room />} />
       </Routes>
     </div>
