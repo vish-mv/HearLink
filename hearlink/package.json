@@ -11,6 +11,7 @@
     "@zegocloud/zego-uikit-prebuilt": "^1.11.0",
     "date-fns": "^3.5.0",
     "gh-pages": "^6.1.1",
+    "jest": "^27.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
@@ -20,16 +21,13 @@
     "socket.io": "^4.7.4",
     "socket.io-client": "^4.7.4",
     "web-vitals": "^2.1.4",
-
     "zego-express-engine-webrtc": "^3.2.0",
-
     "zego-superboard-web": "^2.14.1"
-
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
