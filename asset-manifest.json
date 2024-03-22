@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/HearLink/static/css/main.0cafe146.css",
-    "main.js": "/HearLink/static/js/main.86bc46eb.js",
+    "main.js": "/HearLink/static/js/main.ca282ed3.js",
     "static/media/gesture_recognizer.task": "/HearLink/static/media/gesture_recognizer.392bbeda31a72971b70a.task",
     "static/media/sideImg.png": "/HearLink/static/media/sideImg.08b05652e4632f37c908.png",
     "static/media/Logo short light.png": "/HearLink/static/media/Logo short light.bd6898da515aa9586872.png",
@@ -11,10 +11,10 @@
     "static/media/gback.avif": "/HearLink/static/media/gback.623a3094dbed462aec6c.avif",
     "index.html": "/HearLink/index.html",
     "main.0cafe146.css.map": "/HearLink/static/css/main.0cafe146.css.map",
-    "main.86bc46eb.js.map": "/HearLink/static/js/main.86bc46eb.js.map"
+    "main.ca282ed3.js.map": "/HearLink/static/js/main.ca282ed3.js.map"
   },
   "entrypoints": [
     "static/css/main.0cafe146.css",
-    "static/js/main.86bc46eb.js"
+    "static/js/main.ca282ed3.js"
   ]
 }
