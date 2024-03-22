@@ -1,0 +1,37 @@
+name: Build and Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-push-gcr:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          cd hearlink/src
+          npm install
+
+      - name: Run tests
+        run: |
+          cd hearlink/src
+          npm run test
+
+      - name: Build the React app
+        run: |
+          cd hearlink/src
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        run: |
+          cd hearlink/src
+          git config --global user.name 'vish-mv'
+          git config --global user.email 'visalmunasinghe@gmail.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          npm run deploy
