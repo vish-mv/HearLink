@@ -51,12 +51,9 @@ const Home = () => {
             </div>
             <br></br>
 
-            <div className="lobby_code ">
-          
-             
-            </div>
+            
 
-            <br></br>
+            
             <hr className="line"></hr>
             <br></br>
 
