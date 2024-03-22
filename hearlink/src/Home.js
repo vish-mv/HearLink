@@ -55,7 +55,10 @@ const Home = () => {
           
               <label className="lable">Select Your Type</label>
 
-              
+              <select id="Your_type" className="input_code">
+                  <option id="Deaf">I am a Deaf User</option>
+                  <option id="Healthy">I am a Healthy User</option>
+              </select>
             </div>
 
             <br></br>
