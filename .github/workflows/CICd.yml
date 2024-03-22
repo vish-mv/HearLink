@@ -13,17 +13,20 @@ jobs:
       - name: Checkout codebase
         uses: actions/checkout@v2
 
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
       - name: Install dependencies
         run: |
           cd hearlink/src
           npm install
 
-
-
       - name: Build the React app
         run: |
           cd hearlink/src
-          npm run build --no-strict
+          npm run build
 
       - name: Deploy to GitHub Pages
         run: |
