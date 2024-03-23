@@ -102,22 +102,43 @@ const Room = () => {
         document.body.style.backgroundColor = isDarkTheme ? "#FFFFFF" : "#0E151B";
     };
     
-    document.addEventListener('DOMContentLoaded', () => {
-        // Find the button element
-        const button = document.querySelector('.mCx2N1NwuMWObjjTeG0q');
-    
-        // Check if the button element exists
-        if (button) {
-            // Add a click event listener to the button
-            button.addEventListener('click', () => {
-                // Redirect to the specified URL
-                window.location.href = 'https://hearlink.online/';
-            });
-        } else {
-            // Handle the case where the button element is not found
-            console.error('Button element not found');
-        }
-    });
+    // Function to handle the button click event
+const handleClick = () => {
+    // Redirect to the specified URL
+    window.location.href = 'https://hearlink.online/';
+};
+
+// Function to periodically check for the button element
+const checkButton = () => {
+    // Find the button element
+    const button = document.querySelector('.mCx2N1NwuMWObjjTeG0q');
+
+    // Check if the button element exists
+    if (button) {
+        // If the button exists, add the click event listener
+        button.addEventListener('click', handleClick);
+    } else {
+        // If the button doesn't exist, log a message and retry after a short delay
+        console.log('Button element not found. Retrying...');
+        setTimeout(checkButton, 1000); // Retry after 1 second (adjust the delay as needed)
+    }
+};
+
+// Function to handle the click event for the QeMJj1LEulq1ApqLHxuM button
+const handleCheckButtonClick = () => {
+    // Call the checkButton function
+    checkButton();
+};
+
+// Find the QeMJj1LEulq1ApqLHxuM button element
+const checkButtonElement = document.querySelector('.QeMJj1LEulq1ApqLHxuM');
+
+// Check if the QeMJj1LEulq1ApqLHxuM button element exists
+if (checkButtonElement) {
+    // If the button exists, add the click event listener
+    checkButtonElement.addEventListener('click', handleCheckButtonClick);
+}
+
     
     
     const handleButtonClick = () => {
