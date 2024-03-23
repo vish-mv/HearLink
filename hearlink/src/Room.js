@@ -29,24 +29,7 @@ const Room = () => {
     const name = location.state ? location.state.name : "";
 
     const [gestureRecognizer, setGestureRecognizer] = useState(null); // State to hold gestureRecognizer instance
-    useEffect(() => {
-        // Function to handle the button click event
-        const handleClick = (event) => {
-            const target = event.target;
-            if (target.classList.contains("mCx2N1NwuMWObjjTeG0q")) {
-                // Redirect to the specified URL
-                window.location.href = 'https://hearlink.online/';
-            }
-        };
-
-        // Add event listener for click event on document
-        document.addEventListener('click', handleClick);
-
-        // Cleanup function to remove event listener
-        return () => {
-            document.removeEventListener('click', handleClick);
-        };
-    }, []); // Empty dependency array to ensure the effect runs only once
+ 
 
     const createGestureRecognizer = async () => {
         const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm");
@@ -63,6 +46,7 @@ const Room = () => {
     useEffect(() => {
         createGestureRecognizer();
     }, []);
+    const outText= document.getElementById("outtext");
 
     const handleOpenWebcamButtonClick = async () => {
         if (!gestureRecognizer) {
@@ -97,13 +81,15 @@ const Room = () => {
 
                     }
                     else{
-                        if (categoryName==="blank"){
+                        if (categoryName==="space"){
                             data+=" ";
                         }
                         else{
                             data+=categoryName.toString();
                         }
                         console.log(data);
+                        outText.value=data;
+
                     }
                 }
     
@@ -113,6 +99,29 @@ const Room = () => {
             console.error("Error accessing webcam or running gesture recognizer:", error);
         }
     };
+
+
+
+
+
+    useEffect(() => {
+        // Function to handle the button click event
+        const handleClick = (event) => {
+            const target = event.target;
+            if (target.classList.contains("mCx2N1NwuMWObjjTeG0q")) {
+                // Redirect to the specified URL
+                window.location.href = 'https://hearlink.online/';
+            }
+        };
+
+        // Add event listener for click event on document
+        document.addEventListener('click', handleClick);
+
+        // Cleanup function to remove event listener
+        return () => {
+            document.removeEventListener('click', handleClick);
+        };
+    }, []); // Empty dependency array to ensure the effect runs only once
 
 
     const toggleTheme = () => {
@@ -234,6 +243,9 @@ const Room = () => {
                 <MdRecordVoiceOver className="icon"/>
                 </button>
                 <button id="openWebcamButton" onClick={handleOpenWebcamButtonClick}><FaHandPaper  className="icon"/></button>
+            </div>
+            <div>
+                <input type="text" id="outtext"></input>
             </div>
             <div ref={containerRef} style={{ width: "100vw", height: "calc(100vh - 117px)" }}>
                 {/* Video container will be mounted here */}
