@@ -71,6 +71,7 @@ const Home = () => {
                 required
                 placeholder="Enter Room Code"
                 className="input_code" 
+                id="room_code"
                 value={RoomCode}
                 onChange={(e) => setRoomCode(e.target.value)}></input>
 

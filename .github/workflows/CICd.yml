@@ -22,8 +22,11 @@ jobs:
         run: |
           cd hearlink/src
           npm install
-
       
+      - name: Test
+        run: |
+          cd hearlink/src
+          npm test
 
       - name: Deploy to GitHub Pages
         run: |

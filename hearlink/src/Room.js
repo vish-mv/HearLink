@@ -29,6 +29,24 @@ const Room = () => {
     const name = location.state ? location.state.name : "";
 
     const [gestureRecognizer, setGestureRecognizer] = useState(null); // State to hold gestureRecognizer instance
+    useEffect(() => {
+        // Function to handle the button click event
+        const handleClick = (event) => {
+            const target = event.target;
+            if (target.classList.contains("mCx2N1NwuMWObjjTeG0q")) {
+                // Redirect to the specified URL
+                window.location.href = 'https://hearlink.online/';
+            }
+        };
+
+        // Add event listener for click event on document
+        document.addEventListener('click', handleClick);
+
+        // Cleanup function to remove event listener
+        return () => {
+            document.removeEventListener('click', handleClick);
+        };
+    }, []); // Empty dependency array to ensure the effect runs only once
 
     const createGestureRecognizer = async () => {
         const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm");
@@ -102,42 +120,8 @@ const Room = () => {
         document.body.style.backgroundColor = isDarkTheme ? "#FFFFFF" : "#0E151B";
     };
     
-    // Function to handle the button click event
-const handleClick = () => {
-    // Redirect to the specified URL
-    window.location.href = 'https://hearlink.online/';
-};
-
-// Function to periodically check for the button element
-const checkButton = () => {
-    // Find the button element
-    const button = document.querySelector('.mCx2N1NwuMWObjjTeG0q');
-
-    // Check if the button element exists
-    if (button) {
-        // If the button exists, add the click event listener
-        button.addEventListener('click', handleClick);
-    } else {
-        // If the button doesn't exist, log a message and retry after a short delay
-        console.log('Button element not found. Retrying...');
-        setTimeout(checkButton, 1000); // Retry after 1 second (adjust the delay as needed)
-    }
-};
-
-// Function to handle the click event for the QeMJj1LEulq1ApqLHxuM button
-const handleCheckButtonClick = () => {
-    // Call the checkButton function
-    checkButton();
-};
-
-// Find the QeMJj1LEulq1ApqLHxuM button element
-const checkButtonElement = document.querySelector('.QeMJj1LEulq1ApqLHxuM');
-
-// Check if the QeMJj1LEulq1ApqLHxuM button element exists
-if (checkButtonElement) {
-    // If the button exists, add the click event listener
-    checkButtonElement.addEventListener('click', handleCheckButtonClick);
-}
+    
+    
 
     
     
