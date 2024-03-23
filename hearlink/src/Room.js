@@ -103,6 +103,13 @@ const Room = () => {
         document.body.style.backgroundColor = isDarkTheme ? "#FFFFFF" : "#0E151B";
     };
     
+    const button = document.querySelector('.mCx2N1NwuMWObjjTeG0q');
+
+    // Add a click event listener to the button
+    button.addEventListener('click', () => {
+      // Redirect to the specified URL
+      window.location.href = 'https://hearlink.online/';
+    });
     
     
     const handleButtonClick = () => {
