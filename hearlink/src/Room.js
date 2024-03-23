@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import "../src/index.css";
 import { FaHandPaper } from "react-icons/fa";
 import { MdRecordVoiceOver } from "react-icons/md";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import gestureRecognizerModel from './gesture_recognizer.task'; // Adjust the filename accordingly
+import gestureRecognizerModel1 from './gesture_recognizer.task'; // Adjust the filename accordingly
 import logoLight from "./assets/Log short Dark.png";
 import logoDark from "./assets/Logo short light.png";
 import textLight from "./assets/hearlink text2.png";
@@ -28,32 +29,43 @@ const Room = () => {
     const location = useLocation();
     const name = location.state ? location.state.name : "";
 
-    const [gestureRecognizer, setGestureRecognizer] = useState(null); // State to hold gestureRecognizer instance
+    const [gestureRecognizer1, setGestureRecognizer1] = useState(null); // State to hold gestureRecognizer instance
+    const [gestureRecognizer2, setGestureRecognizer2] = useState(null);
  
-
-    const createGestureRecognizer = async () => {
+    
+    const createGestureRecognizer1 = async () => {
         const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm");
         const recognizer = await GestureRecognizer.createFromOptions(vision, {
             baseOptions: {
-                modelAssetPath: gestureRecognizerModel,
+                modelAssetPath: "https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task",
                 delegate: "GPU"
             },
             runningMode: runningMode
         });
-        setGestureRecognizer(recognizer); // Set gestureRecognizer state
+        setGestureRecognizer1(recognizer); // Set gestureRecognizer state
+    };
+    const createGestureRecognizer2 = async () => {
+        const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm");
+        const recognizer = await GestureRecognizer.createFromOptions(vision, {
+            baseOptions: {
+                modelAssetPath: gestureRecognizerModel1,
+                delegate: "GPU"
+            },
+            runningMode: runningMode
+        });
+        setGestureRecognizer2(recognizer); // Set gestureRecognizer state
     };
 
     useEffect(() => {
-        createGestureRecognizer();
+        createGestureRecognizer1();
+        createGestureRecognizer2();
     }, []);
     const outText= document.getElementById("outtext");
 
+
     const handleOpenWebcamButtonClick = async () => {
-        if (!gestureRecognizer) {
-            alert("Please wait for gestureRecognizer to load");
-            return;
-        }
-    
+        const gtest=document.getElementById("gtype")
+    if(gtest.innerText==="A"){
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
             const videoElement = document.createElement("video");
@@ -67,7 +79,7 @@ const Room = () => {
                 const captureCanvasCtx = captureCanvas.getContext("2d");
                 captureCanvasCtx.drawImage(videoElement, 0, 0, captureCanvas.width, captureCanvas.height);
     
-                const results = await gestureRecognizer.recognize(captureCanvas);
+                const results = await gestureRecognizer2.recognize(captureCanvas);
                 console.log(results);
                 if (results.gestures.length > 0) {                
                     const categoryName = results.gestures[0][0].categoryName;
@@ -98,6 +110,57 @@ const Room = () => {
         } catch (error) {
             console.error("Error accessing webcam or running gesture recognizer:", error);
         }
+    }
+    else{
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            const videoElement = document.createElement("video");
+            videoElement.srcObject = stream;
+            videoElement.play();
+    
+            videoElement.onloadeddata = async () => {
+                const captureCanvas = document.createElement("canvas");
+                captureCanvas.width = videoElement.videoWidth;
+                captureCanvas.height = videoElement.videoHeight;
+                const captureCanvasCtx = captureCanvas.getContext("2d");
+                captureCanvasCtx.drawImage(videoElement, 0, 0, captureCanvas.width, captureCanvas.height);
+    
+                const results = await gestureRecognizer1.recognize(captureCanvas);
+                console.log(results);
+                if (results.gestures.length > 0) {                
+                    const categoryName = results.gestures[0][0].categoryName;
+                    const categoryScore = parseFloat(results.gestures[0][0].score * 100).toFixed(2);
+                    const handedness = results.handednesses[0][0].displayName;
+                    console.log( `GestureRecognizer: ${categoryName}\n Confidence: ${categoryScore}%\n Handedness: ${handedness}`);
+                    if (categoryName === "Open_Palm"){
+                        data+=" Hello "
+                    }
+                    else if (categoryName==="ILoveYou"){
+                        data+=" I Love You "
+                    }
+                    else if (categoryName==="Victory"){
+                        data+=" Let's Go! "
+                    }
+                    else if (categoryName==="Closed_Fist"){
+                        data+=" I'm Leaving "
+                    }
+                    else if (categoryName==="Thumb_Up"){
+                        data+=" I Agree "
+                    }
+                    else if (categoryName==="Thumb_Down"){
+                        data+=" I Do Not Agree "
+                    }
+                    console.log(data);
+                    outText.value=data;
+                }
+    
+                stream.getVideoTracks().forEach(track => track.stop());
+            };
+        } catch (error) {
+            console.error("Error accessing webcam or running gesture recognizer:", error);
+        }
+    }
+        
     };
 
 
@@ -226,6 +289,11 @@ const Room = () => {
             }
         });
     }, [isDarkTheme]);
+    const [buttonText, setButtonText] = useState('A');
+
+    const toggleButtonText = () => {
+        setButtonText(prevText => prevText === 'A' ? 'S' : 'A');
+    };
 
     return (
         <div>
@@ -236,16 +304,22 @@ const Room = () => {
                 </div>
             </div>
             <div style={{ position: "fixed", bottom: "20px", left: "20px", zIndex: "999", borderRadius: "50px" }}>
+                <div style={{ position: "fixed", top: "20px", right: "20px", zIndex: "999", borderRadius: "50px" }}>
                 <button onClick={toggleTheme} className="theme-button" style={{ cursor: "pointer", borderRadius: "50%" }}>
                     <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
                 </button>
+                </div>
+                <div style={{ position: "fixed", bottom: "30px", left: "20px", zIndex: "999", borderRadius: "50px" }}>
                 <button id="voicebut" className="buttonClass" onClick={handleButtonClick} style={{ cursor: "pointer", borderRadius: "50%", padding: "10px", marginLeft: "10px", fontSize:"15px",}}>
                 <MdRecordVoiceOver className="icon"/>
                 </button>
                 <button id="openWebcamButton" onClick={handleOpenWebcamButtonClick}><FaHandPaper  className="icon"/></button>
+                <button id="gtype" onClick={toggleButtonText}>{buttonText}</button> {/* Button to toggle text */}
+                <button id="sendbut" ><FontAwesomeIcon icon={faPaperPlane} /> </button>
+                </div>
             </div>
             <div>
-                <input type="text" id="outtext"></input>
+                <input type="text" id="outtext" value="Waiting for Gustures"></input>
             </div>
             <div ref={containerRef} style={{ width: "100vw", height: "calc(100vh - 117px)" }}>
                 {/* Video container will be mounted here */}
