@@ -1,3 +1,4 @@
+
 .body-home {
     background-image: url('gback.avif'); /* Path to your background image */
     background-size: cover;
@@ -32,6 +33,10 @@
     width: 80%;
     height: auto;
     border-radius: 30px;
+    transition: 0.5s ease;
+}
+.main_login:hover{
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
   .themebutton{
     width: 50px;
@@ -65,6 +70,9 @@
     background-color: rgb(5, 4, 4);
     line-height: 2px;
   }
+  
+  
+  
 
 
   @media (max-width: 575.98px) {

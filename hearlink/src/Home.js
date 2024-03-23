@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import backLogo from "../src/images/sideImg.png";
-import logoImage from "./assets/Logo short light.png";
 import textImage from "./assets/hearlink text2.png";
 import "../src/index.css"
 import "./assets/Home.css"
+import FloatingBalls from "./FloatingBalls";
+
+
 
 
 const Home = () => {
@@ -20,13 +22,14 @@ const Home = () => {
 
       return (
         <div className="body-home">
+          <FloatingBalls /> 
           <div className="main">
           <div className="main_login">
             
           <div className="main_details">
 
           <div className="logo" >
-             <img src={textImage} alt="Second Image" style={{ width: "360px", height: "auto", marginLeft: "5px",}}/>
+             <img src={textImage} alt="SecondImage" style={{ width: "360px", height: "auto", marginLeft: "5px",}}/>
           </div>
           <br></br>
           <br></br>

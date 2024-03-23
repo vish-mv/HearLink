@@ -20,7 +20,6 @@ let data="";
 
 
 
-let meettest=false;
 
 const Room = () => {
     const { roomID } = useParams();
@@ -73,14 +72,14 @@ const Room = () => {
                     const categoryScore = parseFloat(results.gestures[0][0].score * 100).toFixed(2);
                     const handedness = results.handednesses[0][0].displayName;
                     console.log( `GestureRecognizer: ${categoryName}\n Confidence: ${categoryScore}%\n Handedness: ${handedness}`);
-                    if (categoryName == "del"){
+                    if (categoryName === "del"){
 
                     }
-                    else if (categoryName=="none"){
+                    else if (categoryName==="none"){
 
                     }
                     else{
-                        if (categoryName=="u"){
+                        if (categoryName==="blank"){
                             data+=" ";
                         }
                         else{
@@ -173,7 +172,6 @@ const Room = () => {
                 } catch (error) {
                     console.error("Error joining room:", error);
                 }
-                meettest=true;
                 console.log("loaded")
             };
 
