@@ -102,12 +102,21 @@ const Room = () => {
         document.body.style.backgroundColor = isDarkTheme ? "#FFFFFF" : "#0E151B";
     };
     
-    const button = document.querySelector('.mCx2N1NwuMWObjjTeG0q');
-
-    // Add a click event listener to the button
-    button.addEventListener('click', () => {
-      // Redirect to the specified URL
-      window.location.href = 'https://hearlink.online/';
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find the button element
+        const button = document.querySelector('.mCx2N1NwuMWObjjTeG0q');
+    
+        // Check if the button element exists
+        if (button) {
+            // Add a click event listener to the button
+            button.addEventListener('click', () => {
+                // Redirect to the specified URL
+                window.location.href = 'https://hearlink.online/';
+            });
+        } else {
+            // Handle the case where the button element is not found
+            console.error('Button element not found');
+        }
     });
     
     
