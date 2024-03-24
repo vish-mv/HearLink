@@ -65,6 +65,7 @@ const Room = () => {
 
 
     const handleOpenWebcamButtonClick = async () => {
+        
         outText.style.opacity="100%";
         const gtest=document.getElementById("gtype")
     if(gtest.innerText==="A"){
@@ -273,9 +274,64 @@ const Room = () => {
         outText.select();
         document.execCommand('copy');
         console.log('Text copied to clipboard:', outText.value);
-        outText.style.opacity="0%";
-        outText.value=""
+        outText.style.opacity = "0%";
+        outText.value = "";
+    
+        let msgbox = document.querySelector(".xM8CBkrn0wtFOdOP84Bb input");
+        if (!msgbox) {
+            // If input field is not found, simulate a click on the button to make it visible
+            const showButton = document.querySelector(".aUBcrib1jsrHTK9vhlVZ");
+            if (showButton) {
+                console.log("Button found, clicking...");
+                showButton.click();
+                // After clicking the button, reselect the input field
+                setTimeout(() => {
+                    msgbox = document.querySelector(".xM8CBkrn0wtFOdOP84Bb input");
+                    console.log("Input field after click:", msgbox);
+                    if (msgbox) {
+                        msgbox.focus();
+                    } else {
+                        console.error("Input field still not found after clicking the button!");
+                    }
+                }, 1000); // Delay added to ensure the input field is updated in the DOM
+            } else {
+                console.error("Button to show input field not found!");
+                return;
+            }
+        } else {
+            // Focus on the input field
+            msgbox.focus();
+            const notifyb= document.getElementById("notify");
+            notifyb.style.opacity="100%";
+            setTimeout(() => {
+                notifyb.style.opacity="0%";
+            }, 3000);
+        }
     };
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.ctrlKey && event.key === 'v') {
+                setTimeout(() => { // Delay by 2 seconds
+                    const sendButton = document.querySelector(".xM8CBkrn0wtFOdOP84Bb button");
+                    if (sendButton) {
+                        sendButton.click();
+                        console.log("Button clicked");
+                    } else {
+                        console.error("Button not found!");
+                    }
+                }, 1000); // 2000 milliseconds = 2 seconds
+            }
+        };
+
+        // Add event listener for keydown event on document
+        document.addEventListener('keydown', handleKeyDown);
+
+        // Cleanup function to remove event listener
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []); // Empty dependency array to ensure the effect runs only once
+    
 
     return (
         <div>
@@ -299,6 +355,7 @@ const Room = () => {
                 <button id="gtype" onClick={toggleButtonText}>{buttonText}</button> {/* Button to toggle text */}
                 <button id="sendbut"onClick={copyTranscript} ><FontAwesomeIcon icon={faPaperPlane} /> </button>
                 </div>
+                <div id="notify">Press <b>Ctrl + V</b> to send Message</div>
             </div>
             <div>
                 <input type="text" id="outtext"></input>
