@@ -25,9 +25,9 @@
 
 ## About The Project
 
-![Screen Shot](hearlink\src\assets\ss.png)
+![Screen Shot](hearlink/src/assets/ss.png)
 
-HearLink revolutionizes video communication by placing inclusivity at its core, particularly catering to the needs of the hearing impaired community. Our platform offers more than just standard video calls; it provides a seamless experience enriched with cutting-edge features such as real-time sign language translation and speech recognition. Imagine engaging in conversations where every word is understood effortlessly, thanks to our user-friendly interface and innovative technology. Join us in reshaping digital interaction, ensuring that everyone, regardless of ability, has the opportunity to communicate meaningfully and connect on a deeper level.
+HearLink revolutionizes video communication by placing inclusivity at its core, particularly catering to the needs of the hearing-impaired community. Our platform offers more than just standard video calls; it provides a seamless experience enriched with cutting-edge features such as real-time sign language translation and speech recognition. Imagine engaging in conversations where every word is understood effortlessly, thanks to our user-friendly interface and innovative technology. Join us in reshaping digital interaction, ensuring that everyone, regardless of ability, has the opportunity to communicate meaningfully and connect on a deeper level.
 
 ## Built With
 
