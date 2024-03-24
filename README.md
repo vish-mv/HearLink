@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/vish-mv/HearLink">
-    <img src="hearlink/src/assets/Logo short light.png" alt="Logo" width="80" height="80">
+    <img src="hearlink/src/assets/Logo short light.png" alt="Logo" width="80">
   </a>
 
   <h3 align="center">HearLink</h3>
@@ -21,7 +21,7 @@
   </p>
 </p>
 
-![Downloads](https://img.shields.io/github/downloads/vish-mv/HearLink/total) ![Contributors](https://img.shields.io/github/contributors/vish-mv/HearLink?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/vish-mv/HearLink?style=social) ![Issues](https://img.shields.io/github/issues/vish-mv/HearLink) 
+![Contributors](https://img.shields.io/github/contributors/vish-mv/HearLink?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/vish-mv/HearLink?style=social) ![Issues](https://img.shields.io/github/issues/vish-mv/HearLink) 
 
 ## About The Project
 
