@@ -332,6 +332,7 @@ const Room = () => {
             // Focus on the input field
             msgbox.focus();
             const notifyb= document.getElementById("notify");
+            notifyb.textContent = "Press Ctrl + V to send Message";
             notifyb.style.opacity="100%";
             setTimeout(() => {
                 notifyb.style.opacity="0%";
@@ -360,10 +361,23 @@ const Room = () => {
     
 
         const showSign = () => {
-        const container=document.getElementById("imageContainer")
-        container.style.opacity="100%";
-          const newText = combineFalseText();
-          displayImagesForText(newText);
+            const chatbox = document.querySelector(".xM8CBkrn0wtFOdOP84Bb input");
+            if (!chatbox) {
+                const notifyb= document.getElementById("notify");
+                notifyb.textContent = "You Need To Open ChatBox to Use this Translator";
+                notifyb.style.opacity="100%";
+                setTimeout(() => {
+                    notifyb.style.opacity="0%";
+                }, 3000);
+                const chatbut = document.querySelector(".aUBcrib1jsrHTK9vhlVZ")
+                chatbut.click();
+                // After clicking the button, reselect the input field
+                
+            }
+            const container=document.getElementById("imageContainer")
+            container.style.opacity="100%";
+            const newText = combineFalseText();
+            displayImagesForText(newText);
         };
       
         function displayImagesForText(text) {
@@ -524,7 +538,7 @@ const Room = () => {
                 <button id="sendbut"onClick={copyTranscript} ><FontAwesomeIcon icon={faPaperPlane} /> </button>
                 <button id="showsign"onClick={showSign} ><FontAwesomeIcon icon={faComment} /></button>
                 </div>
-                <div id="notify">Press <b>Ctrl + V</b> to send Message</div>
+                <div id="notify">notify</div>
             </div>
             <div>
                 <input type="text" id="outtext"></input>
