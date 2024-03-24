@@ -26,7 +26,8 @@ code {
   top: 30%; /* Move from the top by 50% of the viewport height */
   left: 50%; /* Move from the left by 50% of the viewport width */
   transform: translate(-50%, -50%); /* Centering trick */
-  background-color: aliceblue;
+  background-color: #1e2130;
+  filter: drop-shadow(0 0 0.3rem rgb(127, 229, 255));
   position: fixed;
   width: 80%;
   max-width: 80%;
@@ -150,6 +151,9 @@ code {
   justify-content: flex-end !important; /* Align items to the right */
   align-items: right !important; /* Center items vertically */
   padding-right: 10%;
+}
+#jointest{
+  display:none;
 }
 
 #openWebcamButton{
@@ -358,7 +362,7 @@ background-color: #44485c;
 }
 #notify{
   position: fixed;
-  z-index: 10;
+  z-index: 10000;
   bottom: 120px;
   left: 50px;
   background-color: #1e2130;

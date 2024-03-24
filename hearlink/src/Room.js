@@ -298,6 +298,32 @@ const Room = () => {
     const toggleButtonText = () => {
         setButtonText(prevText => prevText === 'A' ? 'S' : 'A');
     };
+
+    const handleJoin = (event) => {
+        // Check if the clicked element has the specified class
+        if (event.target.classList.contains("VsTVUAD89KWleD0YRVsD")) {
+            // Perform actions when the button with the specified class is clicked
+            console.log("Button clicked!");
+            const showjoin = document.getElementById("jointest");
+            showjoin.style.display="flex";
+            
+            // Add your code here to perform desired actions
+        }
+    };
+
+    // Attach event listener using useEffect hook
+    useEffect(() => {
+        // Add event listener to the document body
+        document.body.addEventListener("click", handleJoin);
+
+        // Cleanup function to remove event listener when component unmounts
+        return () => {
+            document.body.removeEventListener("click", handleJoin);
+        };
+    }, []);
+
+
+
     const copyTranscript = () => {
         // Copy data from outtext input field to clipboard
         const outText = document.getElementById("outtext");
@@ -375,7 +401,14 @@ const Room = () => {
                 
             }
             const container=document.getElementById("imageContainer")
-            container.style.opacity="100%";
+            container.style.opacity="90%";
+            const notifyb= document.getElementById("notify");
+            notifyb.textContent = "You Can Close The SignBox Via Clicking on It";
+            notifyb.style.opacity="100%";
+            setTimeout(() => {
+                notifyb.style.opacity="0%";
+            }, 3000);
+
             const newText = combineFalseText();
             displayImagesForText(newText);
         };
@@ -529,7 +562,7 @@ const Room = () => {
                     <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
                 </button>
                 </div>
-                <div style={{ position: "fixed", bottom: "30px", left: "90px", zIndex: "999", borderRadius: "50px" }}>
+                <div id="jointest" style={{ position: "fixed", bottom: "30px", left: "90px", zIndex: "999", borderRadius: "50px" }}>
                 <button id="voicebut" className="buttonClass" onClick={handleButtonClick} style={{ cursor: "pointer", borderRadius: "50%", padding: "10px", marginLeft: "10px", fontSize:"15px",}}>
                 <MdRecordVoiceOver className="icon"/>
                 </button>
