@@ -3,10 +3,37 @@ import { useParams, useLocation } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import "../src/index.css";
 import { FaHandPaper } from "react-icons/fa";
 import { MdRecordVoiceOver } from "react-icons/md";
+import a from "../src/images/a.png";
+import b from "../src/images/b.png";
+import c from "../src/images/c.png";
+import d from "../src/images/d.png";
+import e from "../src/images/e.png";
+import f from "../src/images/f.png";
+import g from "../src/images/g.png";
+import h from "../src/images/h.png";
+import i from "../src/images/i.png";
+import j from "../src/images/j.png";
+import k from "../src/images/k.png";
+import l from "../src/images/l.png";
+import m from "../src/images/m.png";
+import n from "../src/images/n.png";
+import o from "../src/images/o.png";
+import p from "../src/images/p.png";
+import q from "../src/images/q.png";
+import r from "../src/images/r.png";
+import s from "../src/images/s.png";
+import t from "../src/images/t.png";
+import u from "../src/images/u.png";
+import v from "../src/images/v.png";
+import w from "../src/images/w.png";
+import x from "../src/images/x.png";
+import y from "../src/images/y.png";
+import z from "../src/images/z.png";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import gestureRecognizerModel1 from './gesture_recognizer.task'; // Adjust the filename accordingly
 import logoLight from "./assets/Log short Dark.png";
@@ -194,20 +221,23 @@ const Room = () => {
         setIsDarkTheme(prevTheme => !prevTheme);
         document.body.style.backgroundColor = isDarkTheme ? "#ffffff" : "#0E151B";
     };
-    
-    
-    
-
-    
+        
     
     const handleButtonClick = () => {
+        
         outText.style.opacity="100%";
         startListening();
     
         // Check if the transcript exists
         outText.value=transcript;
     };
+
+    const hidesign = () => {
+        const container=document.getElementById("imageContainer")
+        
+        container.style.opacity="0%";
     
+    };
 
     const startListening = () => SpeechRecognition.startListening({ continuous: false, language: 'en-US' });
     const { transcript } = useSpeechRecognition();
@@ -308,6 +338,144 @@ const Room = () => {
             }, 3000);
         }
     };
+    const combineFalseText = () => {
+        const falseElements = document.querySelectorAll('.false');
+        let combinedText = '';
+        let lastTextLength = 0; // Variable to store the length of last text content
+    
+        falseElements.forEach(element => {
+            const textContent = element.textContent.trim();
+            let textLength = 0; // Variable to store the length of current text content
+            if (textContent !== "" && !/^[\s]*$/.test(textContent)) {
+                textLength = textContent.length;
+                combinedText += textContent;
+                lastTextLength = textLength; // Update the last text length
+            }
+        });
+    
+        // Extract the specified number of characters from the end of combinedText based on lastTextLength
+        const trimmedText = combinedText.slice(-lastTextLength);
+        return trimmedText.trim();
+    };
+    
+
+        const showSign = () => {
+        const container=document.getElementById("imageContainer")
+        container.style.opacity="100%";
+          const newText = combineFalseText();
+          displayImagesForText(newText);
+        };
+      
+        function displayImagesForText(text) {
+            const imageBox = document.getElementById('imageContainer');
+            imageBox.innerHTML = ''; // Clear previous content
+        
+            // Iterate over each character in the text
+            for (let count = 0; count < text.length; count++) {
+                const char = text[count].toLowerCase(); // Convert character to lowercase
+        
+                // Check if the character is a letter (a-z)
+                if (/^[a-z]$/.test(char)) {
+                    // Create an image element
+                    const img = document.createElement('img');
+                    
+                    // Set the source of the image based on the character
+                    switch (char) {
+                        case 'a':
+                            img.src = a;
+                            break;
+                        case 'b':
+                            img.src = b;
+                            break;
+                        case 'c':
+                            img.src = c;
+                            break;
+                        case 'd':
+                            img.src = d;
+                            break;
+                        case 'e':
+                            img.src = e;
+                            break;
+                        case 'f':
+                            img.src = f;
+                            break;
+                        case 'g':
+                            img.src = g;
+                            break;
+                        case 'h':
+                            img.src = h;
+                            break;
+                        case 'i':
+                            img.src = i;
+                            break;
+                        case 'j':
+                            img.src = j;
+                            break;
+                        case 'k':
+                            img.src = k;
+                            break;
+                        case 'l':
+                            img.src = l;
+                            break;
+                        case 'm':
+                            img.src = m;
+                            break;
+                        case 'n':
+                            img.src = n;
+                            break;
+                        case 'o':
+                            img.src = o;
+                            break;
+                        case 'p':
+                            img.src = p;
+                            break;
+                        case 'q':
+                            img.src = q;
+                            break;
+                        case 'r':
+                            img.src = r;
+                            break;
+                        case 's':
+                            img.src = s;
+                            break;
+                        case 't':
+                            img.src = t;
+                            break;
+                        case 'u':
+                            img.src = u;
+                            break;
+                        case 'v':
+                            img.src = v;
+                            break;
+                        case 'w':
+                            img.src = w;
+                            break;
+                        case 'x':
+                            img.src = x;
+                            break;
+                        case 'y':
+                            img.src = y;
+                            break;
+                        case 'z':
+                            img.src = z;
+                            break;
+                        // Add cases for other letters till z
+                        // Make sure to import corresponding images
+                        default:
+                            // If there's no corresponding image, you can handle it here
+                            // For example, display a placeholder image or skip this character
+                            continue; // Skip to the next iteration
+                    }
+        
+                    // Append the image to the imagebox div
+                    imageBox.appendChild(img);
+                }
+            }
+        }
+
+        
+        
+    
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.ctrlKey && event.key === 'v') {
@@ -347,18 +515,21 @@ const Room = () => {
                     <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} className="theme-icon" size="2x" />
                 </button>
                 </div>
-                <div style={{ position: "fixed", bottom: "30px", left: "20px", zIndex: "999", borderRadius: "50px" }}>
+                <div style={{ position: "fixed", bottom: "30px", left: "90px", zIndex: "999", borderRadius: "50px" }}>
                 <button id="voicebut" className="buttonClass" onClick={handleButtonClick} style={{ cursor: "pointer", borderRadius: "50%", padding: "10px", marginLeft: "10px", fontSize:"15px",}}>
                 <MdRecordVoiceOver className="icon"/>
                 </button>
                 <button id="openWebcamButton" onClick={handleOpenWebcamButtonClick}><FaHandPaper  className="icon"/></button>
                 <button id="gtype" onClick={toggleButtonText}>{buttonText}</button> {/* Button to toggle text */}
                 <button id="sendbut"onClick={copyTranscript} ><FontAwesomeIcon icon={faPaperPlane} /> </button>
+                <button id="showsign"onClick={showSign} ><FontAwesomeIcon icon={faComment} /></button>
                 </div>
                 <div id="notify">Press <b>Ctrl + V</b> to send Message</div>
             </div>
             <div>
                 <input type="text" id="outtext"></input>
+            </div>
+            <div id="imageContainer" onClick={hidesign}>
             </div>
             <div ref={containerRef} style={{ width: "100vw", height: "calc(100vh - 117px)" }}>
                 {/* Video container will be mounted here */}
