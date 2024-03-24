@@ -59,11 +59,13 @@ const Room = () => {
     useEffect(() => {
         createGestureRecognizer1();
         createGestureRecognizer2();
+       
     }, []);
     const outText= document.getElementById("outtext");
 
 
     const handleOpenWebcamButtonClick = async () => {
+        outText.style.opacity="100%";
         const gtest=document.getElementById("gtype")
     if(gtest.innerText==="A"){
         try {
@@ -189,7 +191,7 @@ const Room = () => {
 
     const toggleTheme = () => {
         setIsDarkTheme(prevTheme => !prevTheme);
-        document.body.style.backgroundColor = isDarkTheme ? "#FFFFFF" : "#0E151B";
+        document.body.style.backgroundColor = isDarkTheme ? "#ffffff" : "#0E151B";
     };
     
     
@@ -198,27 +200,11 @@ const Room = () => {
     
     
     const handleButtonClick = () => {
+        outText.style.opacity="100%";
         startListening();
-        const sendText = document.querySelector('.xM8CBkrn0wtFOdOP84Bb input'); // Select the input element
     
         // Check if the transcript exists
-        console.log(transcript);
-        sendText.focus();
-    
-        // Create a clipboard element
-        const clipboard = document.createElement('textarea');
-        clipboard.style.position = 'fixed';
-        clipboard.style.opacity = 0;
-        clipboard.value = transcript;
-        document.body.appendChild(clipboard);
-        clipboard.focus();
-        clipboard.select();
-        sendText.focus();
-        // Execute the paste action (Ctrl + V)
-        document.execCommand('paste');
-    
-        // Remove the clipboard element
-        document.body.removeChild(clipboard);
+        outText.value=transcript;
     };
     
 
@@ -267,32 +253,28 @@ const Room = () => {
 
     useEffect(() => {
         const additionalElements = document.querySelectorAll('.QAHxuJxRZWb3P_cbR8QA, .ji5jASszKFf2CGCmbxEh');
-        const additionalElements1 = document.querySelectorAll('.D9WLyEQaARfWqCTyVrpU');
-        const additionalElements2 = document.querySelectorAll('._M8cCug8H18ALQ05cNMt', '.pOvRwHj19chJGkgemUH3');
-
+        
         additionalElements.forEach(element => {
-            element.style.backgroundColor = isDarkTheme ? "#000000" : "#FFFFFF";
-            element.style.color = isDarkTheme ? "#FFFFFF" : "#000000";
+            element.style.backgroundColor = isDarkTheme ? "#1e2130" : "#D2E0FB";
+            element.style.color = isDarkTheme ? "#FFFFFF" : "#0E151B";
         });
-        additionalElements1.forEach(element => {
-            element.style.backgroundColor = isDarkTheme ? "#0E151B" : "#FFFFFF";
-            element.style.color = isDarkTheme ? "#FFFFFF" : "#000000";
-            element.style.boxShadow = isDarkTheme ? "0px 14px 24px 0px rgba(0, 0, 0, 0.1)" : "0px 14px 24px 0px rgba(14, 21, 27, 0.1)";
-        });
-        additionalElements2.forEach(element => {
-            if (isDarkTheme) {
-                element.classList.add('light-custom-class');
-                element.classList.remove('dark-custom-class');
-            } else {
-                element.classList.add('dark-custom-class');
-                element.classList.remove('light-custom-class');
-            }
-        });
+        
+
+
     }, [isDarkTheme]);
     const [buttonText, setButtonText] = useState('A');
 
     const toggleButtonText = () => {
         setButtonText(prevText => prevText === 'A' ? 'S' : 'A');
+    };
+    const copyTranscript = () => {
+        // Copy data from outtext input field to clipboard
+        const outText = document.getElementById("outtext");
+        outText.select();
+        document.execCommand('copy');
+        console.log('Text copied to clipboard:', outText.value);
+        outText.style.opacity="0%";
+        outText.value=""
     };
 
     return (
@@ -315,11 +297,11 @@ const Room = () => {
                 </button>
                 <button id="openWebcamButton" onClick={handleOpenWebcamButtonClick}><FaHandPaper  className="icon"/></button>
                 <button id="gtype" onClick={toggleButtonText}>{buttonText}</button> {/* Button to toggle text */}
-                <button id="sendbut" ><FontAwesomeIcon icon={faPaperPlane} /> </button>
+                <button id="sendbut"onClick={copyTranscript} ><FontAwesomeIcon icon={faPaperPlane} /> </button>
                 </div>
             </div>
             <div>
-                <input type="text" id="outtext" value="Waiting for Gustures"></input>
+                <input type="text" id="outtext"></input>
             </div>
             <div ref={containerRef} style={{ width: "100vw", height: "calc(100vh - 117px)" }}>
                 {/* Video container will be mounted here */}

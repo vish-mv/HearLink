@@ -293,12 +293,22 @@ code {
 #outtext{
   position: fixed;
   z-index: 10;
-  bottom: 30px;
-  right: 10%;
-  background-color: 
-  transparent;
-  color: #1e3fe9;
+  top: 20px;
+  right: 20%;
+  background-color: white;
+  color: #000104;
   border: none;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  filter: drop-shadow(0 0 0.3rem rgb(127, 229, 255));
+  opacity: 0%;
+}
+.D9WLyEQaARfWqCTyVrpU{
+  background-color: 0e141b !important;
 }
 
 #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
