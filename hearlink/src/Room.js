@@ -247,8 +247,8 @@ const Room = () => {
         if (containerRef.current) {
             const meeting = async () => {
                 try {
-                    const appID = 463450622;
-                    const serverSecret = "90f79ca60820b81bed4d06f352e75e82";
+                    const appID = 709761805;
+                    const serverSecret = "0b316a8addc26895b51efdad2d58c059";
                     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
                         appID,
                         serverSecret,
